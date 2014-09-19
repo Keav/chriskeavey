@@ -1,0 +1,493 @@
+
+/*body {padding-top:100px;}*/
+
+/*html, body {height:100%;min-height:100%;}*/
+
+html, body {
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+  color:#555;
+  background-color:transparent;
+  background:linear-gradient(315deg, rgba(0, 170, 255, 0.1), rgba(220, 110, 10, 0.2) 80%),
+  /* linear-gradient(top left, rgba(255, 255, 255, 0.1), rgba(220, 255, 255, 0.2)), */
+  url(http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/shattered.png);
+  background-attachment: fixed, fixed;
+  /* background: #444 url(bg.jpg) 0 0 no-repeat fixed; */
+  /* background-size: 250% auto; */
+  color: #444;
+  box-shadow: inset 0 1px rgba(250, 250, 250, 0.4);
+  }
+
+html {
+  font-size:100%;
+  }
+
+body {
+  font-size:16px;
+  font-size:1rem;
+  line-height:1.4;
+  }
+
+.pointer {cursor: pointer;}
+
+/*html, body {height:100%;}*/
+
+/* *{box-sizing: border-box;} */
+
+/*div[class^='col-'], div[class*=' col-'] {padding:0;margin:0 auto;}*/
+
+.navbar .container-fluid {background-color:transparent;}
+ 
+a:focus {outline:0;}
+
+/*.navbar-collapse {overflow:hidden;}*/
+.navbar {
+  padding-left: 3%;
+  opacity: 0;
+  }
+
+.js .navbar {
+  -webkit-animation:none;
+          animation:none;
+  }
+
+.landing {
+  width:100%;
+  height:100%;
+  background-color:#000;
+  }
+
+.splash {
+  position:absolute;
+  z-index:999;
+  top:50%;
+  left:50%;
+  width:360px;
+  height:100px;
+  margin:-50px 0 0 -180px;
+  text-align:center;
+  text-transform:uppercase;
+  color:#fff;
+  border:1px solid #fff;
+  font-family:'Open Sans Condensed', sans-serif;
+  font-size:3rem;
+  line-height:100px;
+  opacity:0;
+  
+  /*-webkit-transform-origin:100% 100%;
+      -ms-transform-origin:100% 100%;
+          transform-origin:100% 100%;*/
+  }
+
+.splash-background {
+  position:relative;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-repeat:no-repeat;
+  background-position:center center;
+  background-size:cover;
+  opacity:0;
+  }
+
+@media (max-width: 767px) {
+  .splash-background {
+    background-image:url('../images/bgx17gs.jpg');
+    }
+}
+
+@media (min-width:768px) {
+  .splash-background {
+    background-image:url('../images/bgx17gs.jpg');
+    }
+}
+
+@media (min-width:1200px) {
+  .splash-background {
+    background-image:url('../images/bgx17gs.jpg');
+    }
+}
+
+.splash-logo {
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:360px;
+  height:360px;
+  margin:-180px 0 0 -180px;
+  }
+
+.splash-logo img {
+  width:360px;
+  height:360px;
+  }
+
+.fix-background {
+  background-attachment:fixed;
+  }
+
+.pagedown {
+  position:absolute;
+  z-index:999;
+  bottom:20px;
+  left:0;
+  width:100%;
+  margin:0;
+  padding:0;
+  text-align:center;
+  font-size:1.875rem;
+  opacity:0;
+  }
+
+.landing a:link, .landing a:visited, .landing a:active {color:#fff;}
+.landing a:hover {text-decoration:none;color:#2a6496;}
+
+.splash:hover {text-decoration:none;color:#fff;border:1px solid #2a6496;}
+
+.divider-image-cover {
+  position:relative;
+  width:100%;
+  height:50%;
+  background-repeat:no-repeat;
+  background-position:center center;
+  background-size:cover;
+  }
+
+.lazy {
+    display: none;
+}
+
+.s1 {background-image:url('../images/s1.jpg');}
+.s2 {background-image:url('../images/s2.jpg');}
+.s3 {background-image:url('../images/s3.jpg');}
+
+.grad1, .grad2, .grad3 {
+  height:100%;
+}
+
+.grad1 {background: rgba(200, 80, 250, 0.1);}
+
+.grad2 {
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
+  background: rgba(200, 80, 200, 0.1);
+}
+
+.grad3 {
+  background: rgba(230, 250, 250, 0.1);
+}
+
+.infobar {
+  position:relative;
+  width:100%;
+  padding:60px 0 30px 0;
+  /*height:50%;*/
+  background-color:transparent;
+  }
+
+.panel {background-color: transparent;}
+
+#owl-demo .item img {
+  display:block;
+  width:100%;
+  height:auto;
+  }
+
+.carousel-caption {
+  bottom:10%;
+  left:0;
+  width:300px;
+  height:70px;
+  padding-top:0;
+  padding-bottom:20px;
+  padding-left:10px;
+  text-align:left;
+  background-color:#000;
+  background-color:rgba(0,0,0,.5);
+  }
+
+.contact {
+  padding-top:20px;
+  color:#fff;
+  background:#444;
+  background-image: url('../images/grey_wash_wall.png');
+  /*padding-left:3%;
+  padding-right:3%;*/
+  }
+
+.contact h2 {
+  margin-bottom:0;
+  }
+
+.contact hr {
+  margin-top:0;
+  }
+
+.overflow-hidden {
+  overflow:hidden;
+  }
+
+address .glyphicon {
+  margin-right:10px;
+  margin-left:-10px;
+  }
+
+.wrapper         {width:100%;max-width:400px;height:100%;max-height:300px;margin:0 auto;background-color:#222;}
+.h_iframe        {position:relative;/*overflow: hidden;max-height:300px;max-width:400px;*/}
+.h_iframe .ratio {display:block;width:100%;height:auto;}
+.h_iframe iframe {position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+
+footer {
+  height:2.5rem;
+  /*padding-right:1rem;*/
+  color:#fff;
+  background-color:#555;
+  font-size:0.875rem;
+  line-height:2.5rem;
+  }
+
+footer p {margin:0;padding-right:1rem;}
+
+.fade-in {
+  -webkit-transition:opacity 1s ease-in-out;
+          transition:opacity 1s ease-in-out;
+  opacity:1;
+  }
+
+.fade-out {
+  -webkit-transition:opacity 1s ease-in-out;
+          transition:opacity 1s ease-in-out;
+  opacity:0;
+  }
+
+.js .navbar-hide {
+  margin-top:-999px;
+  opacity:0;
+  }
+
+.hide {opacity:0;}
+
+@media (max-width:767px) {
+
+  .splash {
+    width:280px;
+    height:80px;
+    margin:-40px 0 0 -140px;
+    line-height:80px;
+    }
+
+  .wrapper {
+    margin-bottom:20px;
+    }
+
+  .center {
+    margin:0 auto;
+    text-align:center;
+    }
+
+  .contact {
+    padding-top:50px;
+    }
+
+  address .glyphicon {
+    margin:0;
+    }
+
+  }
+
+@media (min-width:768px) {
+  address span {margin-left:1rem;}
+  }
+
+/* ******************************************************************************************* */
+
+.row-flex, .row-flex > div[class*='col-'] {
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:-webkit-flex;
+  display:        flex;
+
+  -webkit-box-flex:1;
+  
+  -webkit-flex:1 1 auto;
+      -ms-flex:1 1 auto;
+          flex:1 1 auto;
+  }
+
+.row-flex-wrap {
+  -webkit-flex-flow:row wrap;
+  -webkit-align-content:flex-start;
+      -ms-flex-line-pack:start;
+          align-content:flex-start;
+  -webkit-box-flex:0;
+  -webkit-flex:0;
+      -ms-flex:0;
+          flex:0;
+  }
+
+.row-flex > div[class*='col-'], .container-flex > div[class*='col-'] {
+  margin:-.2px; /* hack adjust for wrapping */
+  }
+
+.container-flex > div[class*='col-'] div, .row-flex > div[class*='col-'] div {
+  width:100%;
+  }
+
+
+.flex-col {
+  display:        -webkit-box;
+  display:        -ms-flexbox;
+  display:        flex;
+  display:-webkit-flex;
+
+  -webkit-box-flex:1;
+
+  -webkit-flex:1 100%;
+      -ms-flex:1 100%;
+          flex:1 100%;
+  -webkit-flex-flow:column nowrap;
+      -ms-flex-flow:column nowrap;
+          flex-flow:column nowrap;
+  }
+
+.flex-grow {
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
+  display:flex;
+
+  -webkit-flex:2;
+          -webkit-box-flex:2;
+          -ms-flex:2;
+          flex:2;
+  }
+
+
+/* Make Bootstrap Navabr permanently in collapsed (mobile) state *
+@media (max-width: 1200px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 0;
+  }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+  }
+  .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+      display:block !important;
+  }
+}
+
+/* Make Bootstrap Navbar transparent *
+
+.navbar-custom .navbar {
+   background-color: transparent;
+   background: transparent;
+}
+
+/*.navbar-custom .navbar-toggle {
+  border-color: #333;
+}
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus {
+  background-color: #f00;
+}
+.navbar-custom .navbar-toggle .icon-bar {
+  background-color: #ff0;
+}
+.navbar-custom .navbar-toggle .icon-bar:hover {
+  background-color: #ff0;
+}
+
+/*.navbar li { color: #000 }
+
+.navbar-collapse{border:0;}*/
+
+/* Custom Colors *
+
+.navbar-custom {
+  background-color: #00ff00;
+  border-color: #ff0000;
+}
+.navbar-custom .navbar-brand {
+  color: #0000ff;
+}
+.navbar-custom .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: #ff8000;
+}
+.navbar-custom .navbar-text {
+  color: #0000ff;
+}
+.navbar-custom .navbar-nav > li > a {
+  color: #0000ff;
+}
+.navbar-custom .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #ff8000;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: #ff8000;
+  background-color: #ff0000;
+}
+.navbar-custom .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  color: #ff8000;
+  background-color: #ff0000;
+}
+.navbar-custom .navbar-toggle {
+  border-color: #ff0000;
+}
+.navbar-custom .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: #ff0000;
+}
+.navbar-custom .navbar-toggle .icon-bar {
+  background-color: #0000ff;
+}
+.navbar-custom .navbar-collapse,
+.navbar-custom .navbar-form {
+  border-color: #0000ff;
+}
+.navbar-custom .navbar-link {
+  color: #0000ff;
+}
+.navbar-custom .navbar-link:hover {
+  color: #ff8000;
+}
+
+@media (max-width: 767px) {
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a {
+    color: #0000ff;
+  }
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #ff8000;
+  }
+  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #ff8000;
+    background-color: #ff0000;
+  }
+}*/
