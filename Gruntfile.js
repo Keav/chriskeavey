@@ -21,12 +21,12 @@ module.exports = function(grunt) {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
-	  build: {
-	    files: {
-	     	'dist/js/custom.min.js' : 'src/js/custom.js',
-	     	'src/js/custom.min.js' : 'src/js/custom.js',
-	    }
-	  }
+      build: {
+        files: {
+          'dist/js/custom.min.js' : 'src/js/custom.js',
+          'src/js/custom.min.js' : 'src/js/custom.js',
+        }
+      }
     },
 
     watch: {
