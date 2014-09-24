@@ -226,6 +226,7 @@ pip-log.txt
 *.txt
 *.db
 *.ffs_db
+*.ffs_gui
 *.sublime-workspace
 BingSiteAuth.xml
 !dist/
