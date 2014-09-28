@@ -175,6 +175,7 @@ a:focus {outline:0;}
 }
 
 .grad3 {
+  padding-top:60px;
   background: rgba(230, 250, 250, 0.1);
 }
 
