@@ -164,7 +164,7 @@ a:focus {outline:0;}
 .s3 {background-image:url('../images/s3.jpg');}
 
 .grad1, .grad2, .grad3 {
-  height:100%;
+  position:relative;
 }
 
 .grad1 {background: rgba(200, 80, 250, 0.1);}
