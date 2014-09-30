@@ -234,6 +234,53 @@ address .fa {
   margin-left:-14px;
   }
 
+.social {
+  position:absolute;
+  bottom:20px;
+  left:0;
+  line-height:2.5rem;
+  font-size:2.5rem;
+  z-index:10;
+}
+
+.social ul {
+    overflow: none;
+    padding:0;
+    margin:0;
+}
+ 
+.social ul li {
+    list-style-type: none;
+    display:inline;
+}
+
+.social ul li a span:hover {
+  transform:translate(0,-3px);
+}
+ 
+.social ul li a span {
+    color: #fff;
+    -webkit-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+}
+
+ul li a span.fa-facebook-square:hover {
+    color:#3b5998
+} 
+ul li a span.fa-linkedin-square:hover {
+    color:#007bb6
+}
+ul li a span.fa-twitter-square:hover {
+    color:#00aced
+}
+ul li a span.fa-github-square:hover {
+    color:#4183c4
+}
+
+
+
+
+
 .wrapper         {width:100%;max-width:400px;height:100%;max-height:300px;margin:0 auto;background-color:#222;}
 .h_iframe        {position:relative;/*overflow: hidden;max-height:300px;max-width:400px;*/}
 .h_iframe .ratio {display:block;width:100%;height:auto;}
@@ -269,6 +316,14 @@ footer p {margin:0;padding-right:1rem;}
 
 .hide {opacity:0;}
 
+/*
+==========================
+//                      //
+// Media Query Section  //
+//                      //
+========================== 
+*/
+
 @media (max-width:767px) {
 
   .splash {
@@ -288,8 +343,13 @@ footer p {margin:0;padding-right:1rem;}
     }
 
   .contact {
-    padding-top:50px;
+    padding-top:0;
     }
+
+  .social {
+    position:relative;
+    top:10px;
+  }
 
   address .fa {
     margin:0;
