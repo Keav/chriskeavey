@@ -24,10 +24,12 @@
 			//alert('Desktop');
 			$('.splash-background').addClass('fix-background');
 			$('.divider-image-cover').addClass('fix-background');
+			$('html,body').addClass('fix-background');
 			} else {
 			//alert('Mobile')
 			$('.splash-background').removeClass('fix-background');
 			$('.divider-image-cover').removeClass('fix-background');
+			$('html,body').removeClass('fix-background');
 		}
 
 	
@@ -49,6 +51,28 @@
     		singleItem : true,
     		transitionStyle : "fade",
 	  		});
+		});
+
+		// Initialize and setup Owl Portfolio Carousel 
+		$(document).ready(function() {
+
+  		var owl = $("#owl-portfolio");
+
+  		owl.owlCarousel({
+  			autoPlay: false,
+    		navigation : false,
+    		pagination:true,
+    		singleItem : true,
+    		slideSpeed : 500
+	  		});
+
+	  		  // Custom Navigation Events
+			  $(".next").click(function(){
+			    owl.trigger('owl.next');
+			  })
+			  $(".prev").click(function(){
+			    owl.trigger('owl.prev');
+			  })
 		});
 
 		// Collapse Bootstrap navbar when anywhere on page is clicked
@@ -141,7 +165,7 @@
 				disable_scroll();
 
 			  	$('html, body').stop().animate({
-	                    scrollTop: $('#anchor_feature').offset().top
+	                    scrollTop: $('#anchor-portfolio').offset().top
 	                }, 1000,'easeOutQuad');
 				}
 			}

@@ -10,11 +10,7 @@ html, body {
   padding:0;
   color:#555;
   background-color:transparent;
-  /*background:linear-gradient(315deg, rgba(0, 170, 255, 0.1), rgba(220, 110, 10, 0.2) 80%),
-  /* linear-gradient(top left, rgba(255, 255, 255, 0.1), rgba(220, 255, 255, 0.2)), */
-  /*url(http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/shattered.png);*/ /* **** Causing whole screen repaint!!! */
-  background-attachment: fixed, fixed;
-  box-shadow: inset 0 1px rgba(250, 250, 250, 0.4);
+  background-image:url(../images/diamond_upholstery.png); /* **** Causing whole screen repaint!!! */
   }
 
 html {
@@ -167,16 +163,20 @@ a:focus {outline:0;}
   position:relative;
 }
 
-.grad1 {background: rgba(200, 80, 250, 0.1);}
+.grad1 {
+  padding:0 0 60px 0;
+  background: rgba(200, 100, 0, 0.1);
+}
 
 .grad2 {
+  padding:0 0 40px 0;
   box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
-  background: rgba(200, 80, 200, 0.1);
+  background: rgba(0, 200, 0, 0.1);
 }
 
 .grad3 {
-  padding-top:60px;
-  background: rgba(230, 250, 250, 0.1);
+  padding:80px 0 30px 0;
+  background: rgba(40, 40, 250, 0.1);
 }
 
 .infobar {
@@ -189,11 +189,38 @@ a:focus {outline:0;}
 
 .panel {background-color: transparent;}
 
-#owl-demo .item img {
+#owl-demo .item img, #owl-portfolio .item img {
   display:block;
   width:100%;
   height:auto;
   }
+
+.prev, .next {
+  position:absolute;
+  top:50%;
+  padding:5px;
+  margin:0;
+  margin-top:-58px;
+  z-index:100;
+  font-size:3rem;
+  cursor:pointer;
+  color:#555;
+}
+
+.prev {
+  left:0;
+  margin-left:-40px;
+}
+
+.next {
+  right:0;
+  margin-right:-40px;
+}
+
+@media (max-width:767px) {
+  .prev {margin-left:0;}
+  .next {margin-right:0;}
+}
 
 .carousel-caption {
   bottom:10%;
@@ -207,6 +234,13 @@ a:focus {outline:0;}
   background-color:#000;
   background-color:rgba(0,0,0,.5);
   }
+
+#owl-portfolio .carousel-caption {
+  bottom:0;
+  width:100%;
+  height:auto;
+  background-color:rgba(0,0,0,.9);
+}
 
 .contact {
   padding-top:20px;
