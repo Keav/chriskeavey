@@ -337,13 +337,17 @@ footer p {margin:0;padding-right:1rem;}
     }
 
   .contact {
-    padding-top:0;
+    padding-top:20px;
     }
+
+  .contact h2 {padding:20px 0 20px 0;}
 
   .social {
     position:relative;
     top:10px;
   }
+
+  .reel {width:135px;margin:0 auto;}
 
   address .fa {
     margin:0;
