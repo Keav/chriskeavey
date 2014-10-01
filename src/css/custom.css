@@ -243,42 +243,36 @@ address .fa {
   z-index:10;
 }
 
-.social ul {
-    overflow: none;
-    padding:0;
-    margin:0;
-}
- 
-.social ul li {
-    list-style-type: none;
-    display:inline;
+.reel {
+  overflow:hidden;
+  height:40px;
 }
 
-.social ul li a span:hover {
-  transform:translate(0,-3px);
+.reel ul {
+  padding:0;
+  margin:0;
 }
- 
-.social ul li a span {
-    color: #fff;
+
+.reel ul li {
+  color:#fff;
+  width:45px;
     -webkit-transition: all 0.2s ease-in-out;
-            transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
 }
 
-ul li a span.fa-facebook-square:hover {
-    color:#3b5998
-} 
-ul li a span.fa-linkedin-square:hover {
-    color:#007bb6
-}
-ul li a span.fa-twitter-square:hover {
-    color:#00aced
-}
-ul li a span.fa-github-square:hover {
-    color:#4183c4
+.reel > ul > li:hover{
+  transform:translate(0,-40px);
 }
 
+.reel ul li {
+  float:left;
+  list-style-type: none;
+}
 
-
+.linkedin{color:#007bb6;}
+.github{color:#4183c4;}
+.twitter{color:#00aced;}
+.facebook{color:#3b5998;}
 
 
 .wrapper         {width:100%;max-width:400px;height:100%;max-height:300px;margin:0 auto;background-color:#222;}
