@@ -112,7 +112,12 @@ $(document).ready(function() {
       el.find(".owl-item").eq(0).addClass("synced");
     }
   });
- 
+
+  $('.item a').on('click', function(event){
+    var href = $(this).attr('href');
+    window.location = href;
+  });
+
   function syncPosition(el){
     var current = this.currentItem;
     $("#sync2")

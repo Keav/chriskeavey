@@ -54,7 +54,7 @@ a:focus {outline:0;}
 
 .splash {
   position:absolute;
-  z-index:999;
+  z-index:1;
   top:50%;
   left:50%;
   width:360px;
@@ -126,7 +126,7 @@ a:focus {outline:0;}
 
 .pagedown {
   position:absolute;
-  z-index:999;
+  z-index:2;
   bottom:20px;
   left:0;
   width:100%;
@@ -150,6 +150,69 @@ a:focus {outline:0;}
   background-position:center center;
   background-size:cover;
   }
+
+.forkme {
+  position:fixed;
+  top:0;
+  right:0;
+  border:0;
+  z-index:9999;
+  }
+
+  .banner {
+    position:absolute;
+    top:0;
+    left:0;
+    overflow:hidden;
+    height:120px;
+    width:120px;
+    background-color:transparent;
+  }
+
+  .projects {
+    background:#000;
+    color:#fff;
+    text-decoration:none;
+    font-family:sans-serif;
+    text-align:center;
+    padding:5px 0;
+    font-size:1rem;
+    line-height:1rem;
+    position:relative;
+  }
+
+  .projects::before, .projects::after {
+    content:"";
+    width:100%;
+    display:block;
+    position:absolute;
+    top:1px;
+    left:0;
+    height:1px;
+    background:#fff;
+    }
+
+  .projects::after {
+    bottom:1px;
+    top:auto;
+    }
+
+    .projects {
+      position:absolute;
+      display:block;
+      top:30px;
+      left:-30px;
+      width:150px;
+      overflow:hidden;
+      height:26px;
+      z-index:9999;
+      transform:rotate(-45deg);
+      -webkit-transform:rotate(-45deg);
+      -ms-transform:rotate(-45deg);
+      -moz-transform:rotate(-45deg);
+      -o-transform:rotate(-45deg);
+      box-shadow:4px 4px 10px rgba(0,0,0,0.8);
+      }
 
 .lazy {
     display: none;
@@ -209,7 +272,7 @@ a:focus {outline:0;}
   top:50%;
   padding:5px;
   margin:0;
-  z-index:100;
+  z-index:3;
   font-size:3rem;
   cursor:pointer;
   color:#555; 
@@ -290,7 +353,7 @@ address .fa {
   left:0;
   line-height:2.5rem;
   font-size:2.5rem;
-  z-index:10;
+  z-index:4;
 }
 
 .reel {
