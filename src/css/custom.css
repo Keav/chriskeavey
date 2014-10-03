@@ -19,9 +19,26 @@ html {
 
 body {
   font-size:16px;
-  font-size:1rem;
+/*  font-size:1rem;*/
   line-height:1.4;
   }
+
+@media (max-width: 767px) {
+    body {font-size: 10px;
+  line-height:1.4;}
+}
+
+@media (max-width: 992px) {
+    body {font-size: 14px;
+  line-height:1.4;}
+}
+
+.anchor{
+  display: block;
+  position: relative;
+  top: -40px;
+  visibility: hidden;
+}
 
 .pointer {cursor: pointer;}
 
