@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no minimal-ui">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
         <meta name="apple-mobile-web-app-capable" content="yes">
 
         <meta name="robots" content="noindex">
@@ -13,21 +13,21 @@
         
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300">
         
-        <link rel="stylesheet" href="font-awesome-4.2.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="font-awesome-4.2.0/css/font-awesome.css">
         
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.css">
 
         <link rel="stylesheet" href="css/animations.css">
 
-        <link rel="stylesheet" href="owl-carousel/owl.carousel.min.css">
-        <link rel="stylesheet" href="owl-carousel/owl.theme.min.css">
-        <link rel="stylesheet" href="owl-carousel/owl.transitions.min.css">
+        <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
+        <link rel="stylesheet" href="owl-carousel/owl.theme.css">
+        <link rel="stylesheet" href="owl-carousel/owl.transitions.css">
 
         <link rel="stylesheet" href="css/custom.css">
 
         <script src="js/modernizr-2.8.3.js"></script>
-        <script src="js/picturefill.min.js" async></script>
+        <script src="js/picturefill.js" async></script>
 
         <link rel="apple-touch-icon" href="images/custom_icon.png">
         <link rel="icon" type="image/png" href="images/custom_icon.png">
@@ -146,81 +146,116 @@
         <div class="container-fluid">
             <div class="col-sm-8 col-sm-offset-2">
 
-                <div id="sync1" class="owl-carousel">
+                <div id="owl-portfolio" class="owl-carousel">
                     
                     <!-- Current Sites -->
                     <div class="item">
                         <div class="banner hidden-xs"><span class="projects">Current Site</span></div>
-                        <img srcset="images/keav_website_screengrab_1024.jpg 1170w, images/keav_website_screengrab_1024.jpg 970w, images/keav_website_screengrab_1024.jpg 750w"
-                             sizes="100vw"
+                        <div id="getHeight">
+
+                        <img srcset="images/website_screengrab_keav_1024.jpg 1024w, images/website_screengrab_keav_640.jpg 640w"
+                             sizes="(min-width: 1170px) 100vw, (min-width: 970px;) 100vw, 100vw"
                              alt=""
                              src="">
+                        </div>
+                        <article>
+                            <h4><a href="http://keav.net" title="keav.net">http://keav.net</a></h4>
+                            <p>A personal website. Always very clean and simple, I generally use this site to experiment a bit. There is currently an Octopress and a Wordpress blog hosted here.</p>
+                        </article>
                     </div>
 
                     <div class="item">
                         <div class="banner hidden-xs"><span class="projects">Current Site</span></div>
-                        <img srcset="images/chriskeavey_website_screengrab_1024.jpg 1170w, images/chriskeavey_website_screengrab_1024.jpg 970w, images/chriskeavey_website_screengrab_1024.jpg 750w"
+                        <img srcset="images/website_screengrab_chriskeavey_1024.jpg 1170w, images/website_screengrab_chriskeavey_640.jpg 970w"
                              sizes="100vw"
                              alt=""
                              src="">
+                        <article>
+                            <h4><a href="http://chriskeavey.com" title="chriskeavey.com">http://chriskeavey.com</a></h4>
+                            <p>I always want this site to appear crisp and clean, but with great functionality. I want it to be cutting edge, but only if it fits in with the overall feel i.e. Not too much Parallax. - All without lag, FOUC (Flash Of Unstyled Content) or any other bugginess that might detract from a silky smooth experience. Oh, and I want this across all devices! Whilst I will try to support older versions of browsers, I won't do it at the cost of using the latest technology.</p>
+                        </article>
                     </div>
 
                     <!-- Future Projects -->
                     <div class="item">
                         <div class="banner hidden-xs"><span class="projects">Future Project</span></div>
-                        <img srcset="images/btr_website_screengrab_1024.jpg 1170w, images/btr_website_screengrab_1024.jpg 970w, images/btr_website_screengrab_1024.jpg 750w"
+                        <img srcset="images/website_screengrab_btr_1024.jpg 1170w, images/website_screengrab_btr_640.jpg 970w"
                              sizes="100vw"
                              alt=""
                              src="">
+                        <article>
+                            <h4><a href="http://www.barrytouristrailway.co.uk" title="Barry Tourist Railway">www.barrytouristrailway.co.uk</a></h4>
+                            <p>Created by Blue Stag Studios in Cardiff in 2011, this site has served the Railway well. I have been managing the content for this site since it was created and have also re-written the Twitter, Google Maps and Flickr plugins. This was necessary for Twitter when the API changed to use OAuth in early 2013. As technology never stands still I plan to update the underlying code, keeping much of the design but with the intention of modernising the feel and making it responsive.</p>
+                        </article>
                     </div>
 
                     <!-- Current Projects -->
                     <div class="item">
                         <div class="banner hidden-xs"><span class="projects">Current Project</span></div>
-                        <img srcset="images/brc_website_screengrab_1024.jpg 1170w, images/brc_website_screengrab_1024.jpg 970w, images/brc_website_screengrab_1024.jpg 750w"
+                        <img srcset="images/website_screengrab_brc_1024.jpg 1170w, images/website_screengrab_brc_640.jpg 970w"
                              sizes="100vw"
                              alt=""
                              src="">
+                        <article>
+                            <h4><a href="http://www.barryrailcentre.co.uk" title="Barry Rail Centre">www.barryrailcentre.co.uk</a></h4>
+                            <p>Much like its sister site of the Barry Tourist Railway, this site has been flagged as requiring a priority update. The focus will be on bringing the design up to date whilst adding a slightly more commercial feel. The underlying code and structure will be modernised and it will be made responsive.</p>
+                        </article>
                     </div>
 
                     <!-- Past Projects -->
                     <div class="item">
                         <div class="banner hidden-xs"><span class="projects">Past Project</span></div>
-                        <img srcset="images/ctl_website_screengrab_1024.jpg 1170w, images/ctl_website_screengrab_1024.jpg 970w, images/ctl_website_screengrab_1024.jpg 750w"
+                        <img srcset="images/website_screengrab_ctl_1024.jpg 1170w, images/website_screengrab_ctl_640.jpg 970w"
                              sizes="100vw"
                              alt=""
                              src="">
+                        <article>
+                            <h4><a href="http://www.cambriantransport.com" title="cambriantransport.com">www.cambriantransport.com</a></h4>
+                            <p>Created in 2008. The website was not the main source of business but it was felt that a presence on the internet would be of benefit for clients who were already engaged through other routes.</p>
+                        </article>
                     </div>
 
                     <div class="item">
                         <div class="banner hidden-xs"><span class="projects">Historical</span></div>
-                        <img srcset="images/isc_website_screengrab_1024.jpg 1170w, images/isc_website_screengrab_1024.jpg 970w, images/isc_website_screengrab_1024.jpg 750w"
+                        <img srcset="images/website_screengrab_isc_1024.jpg 1170w, images/website_screengrab_isc_640.jpg 970w"
                              sizes="100vw"
                              alt=""
                              src="">
+                        <article>
+                             <h4>View <a href="http://keav.net/portfolio/isc/" title="imperialspacecorporation.com">www.imperialspacecorporation.com</a> archived site.</h4>
+                            <p>2006 - Internet Spaceships are a serious business. During my time as a founding member of a corporation in the MMORPG <a href="http://www.eve-online.com" title="Eve Online">Eve Online</a>, I created this site as an information and communications resource for our members. We had an active phpBB forum (sadly I've mislaid the database backup) and our own killboard. We took it quite seriously and it was run with strict military discipline.</p>
+                        </article>
                     </div>
 
                     <div class="item">
                         <div class="banner hidden-xs"><span class="projects">Historical</span></div>
-                        <img srcset="images/halflife_website_screengrab_1024.jpg 1170w, images/halflife_website_screengrab_1024.jpg 970w, images/halflife_website_screengrab_1024.jpg 750w"
+                        <img srcset="images/website_screengrab_halflife_1024.jpg 1170w, images/website_screengrab_halflife_640.jpg 970w"
                              sizes="100vw"
                              alt=""
                              src="">
+                        <article>
+                            <h4>View <a href="http://keav.net/portfolio/halflife/" title="Half-Life">Half-Life</a> archived site.</h4>
+                            <p>If you were gaming in the early 2000's, you definitely played Half-Life. I created this site as a news resource for friends and anyone else who might have been interested in fan created content, videos and game mods.</p>
+                        </article>
                     </div>
 
                     <div class="item">
                         <div class="banner hidden-xs"><span class="projects">Historical</span></div>
-                        <img srcset="images/student_web_website_screengrab_1024.jpg 1170w, images/student_web_website_screengrab_1024.jpg 970w, images/student_web_website_screengrab_1024.jpg 750w"
+                        <img srcset="images/website_screengrab_student_web_1024.jpg 1170w, images/website_screengrab_student_web_640.jpg 970w"
                              sizes="100vw"
                              alt=""
                              src="">
+                        <article>
+                            <h4>View <a href="http://keav.net/portfolio/studentweb/" title="studnet-web.net">www.student-web.net</a> archived site.</h4>
+                            <p>From way back in 2000. I created this site whilst at university. The idea behind the venture was to become the number one portal for UK university students!</p>
+                        </article>
                     </div>
 
                 </div>
 
-                <div id="sync2" class="owl-carousel">
+                <!-- <div id="sync2" class="owl-carousel">
 
-                    <!-- Current Sites -->
+                    <!-- Current Sites --
                     <div class="item">
                             <h4><a href="http://keav.net" title="keav.net">http://keav.net</a></h4>
                             <p>A personal website. Always very clean and simple, I generally use this site to experiment a bit. There is currently an Octopress and a Wordpress blog hosted here.</p>
@@ -231,40 +266,40 @@
                             <p>I always want this site to appear crisp and clean, but with great functionality. I want it to be cutting edge, but only if it fits in with the overall feel i.e. Not too much Parallax. - All without lag, FOUC (Flash Of Unstyled Content) or any other bugginess that might detract from a silky smooth experience. Oh, and I want this across all devices! Whilst I will try to support older versions of browsers, I won't do it at the cost of using the latest technology.</p>
                     </div>
 
-                    <!-- Future Projects -->
+                    <!-- Future Projects --
                     <div class="item">
                             <h4><a href="http://www.barrytouristrailway.co.uk" title="Barry Tourist Railway">www.barrytouristrailway.co.uk</a></h4>
                             <p>Created by Blue Stag Studios in Cardiff in 2011, this site has served the Railway well. I have been managing the content for this site since it was created and have also re-written the Twitter, Google Maps and Flickr plugins. This was necessary for Twitter when the API changed to use OAuth in early 2013. As technology never stands still I plan to update the underlying code, keeping much of the design but with the intention of modernising the feel and making it responsive.</p>
                     </div>
 
-                    <!-- Current Project -->
+                    <!-- Current Project --
                     <div class="item">
                             <h4><a href="http://www.barryrailcentre.co.uk" title="Barry Rail Centre">www.barryrailcentre.co.uk</a></h4>
                             <p>Much like its sister site of the Barry Tourist Railway, this site has been flagged as requiring a priority update. The focus will be on bringing the design up to date whilst adding a slightly more commercial feel. The underlying code and structure will be modernised and it will be made responsive.</p>
                     </div>
 
-                    <!-- Past Projects -->
+                    <!-- Past Projects --
                     <div class="item">
                             <h4><a href="http://www.cambriantransport.com" title="cambriantransport.com">www.cambriantransport.com</a></h4>
                             <p>Created in 2008. The website was not the main source of business but it was felt that a presence on the internet would be of benefit for clients who were already engaged through other routes.</p>
                     </div>
 
                     <div class="item">
-                            <h4>View <a href="http://keav.net/portfolio/isc/" title="imperialspacecorporation.com">www.imperialspacecorporation.com</a> site archive.</h4>
+                            <h4>View <a href="http://keav.net/portfolio/isc/" title="imperialspacecorporation.com">www.imperialspacecorporation.com</a> archived site.</h4>
                             <p>2006 - Internet Spaceships are a serious business. During my time as a founding member of a corporation in the MMORPG <a href="http://www.eve-online.com" title="Eve Online">Eve Online</a>, I created this site as an information and communications resource for our members. We had an active phpBB forum (sadly I've mislaid the database backup) and our own killboard. We took it quite seriously and it was run with strict military discipline.</p>
                     </div>
 
                     <div class="item">
-                            <h4>View <a href="http://keav.net/portfolio/halflife/" title="Half-Life">Half-Life</a> site archive.</h4>
+                            <h4>View <a href="http://keav.net/portfolio/halflife/" title="Half-Life">Half-Life</a> archived site.</h4>
                             <p>If you were gaming in the early 2000's, you definitely played Half-Life. I created this site as a news resource for friends and anyone else who might have been interested in fan created content, videos and game mods.</p>
                     </div>
 
                     <div class="item">
-                            <h4>View <a href="http://keav.net/portfolio/studentweb/" title="studnet-web.net">www.student-web.net</a> site archive.</h4>
+                            <h4>View <a href="http://keav.net/portfolio/studentweb/" title="studnet-web.net">www.student-web.net</a> archived site.</h4>
                             <p>From way back in 2000. I created this site whilst at university. The idea behind the venture was to become the number one portal for UK university students!</p>
                     </div>
 
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -337,7 +372,7 @@
             </div>
         </div> -->
 
-    <div style="clear:both";></div>
+    <div style="clear:both"></div>
 
     <div class="anchor" id="anchor-contact"></div>
 
@@ -443,16 +478,18 @@
 
         <!-- The order of loading .js scripts matters. jquery.js must be before bootstrap.js -->
         <script src="js/jquery-2.1.1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>     
+        <script src="js/bootstrap.js"></script>     
 
         <script src="js/jquery.easing.1.3.js"></script>
-        <script src="js/waypoints.min.js"></script>
+        <script src="js/waypoints.js"></script>
 
         <script src="owl-carousel/owl.carousel.js"></script>
 
 <!--         <script src="js/jquery.nicescroll.js"></script> Nice smooth scrolling but conflicts with scroll disable function used on landing section
  -->
         <script src="js/custom.js"></script>
+
+<!--         <script src="js/google_analytics.js"></script> -->
 
         <!-- <script type="text/javascript">
         $(document).ready(
@@ -472,19 +509,5 @@
             }
         );
         </script> -->
-
-        <!--<script>
-            var _gaq = _gaq || [];
-            var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
-            _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
-            _gaq.push(['_setAccount', 'UA-xxxxxxxx-x']);
-            _gaq.push(['_trackPageview']);
-
-            (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-        </script>-->
     </body>
 </html>

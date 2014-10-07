@@ -269,43 +269,68 @@ a:focus {outline:0;}
 
 .panel {background-color: transparent;}
 
-#sync1 .item img {
+#owl-portfolio .item img {
   display:block;
   width:100%;
   height:auto;
 }
 
-#sync2 .item {
+.item article {
+  padding:10px;
+  color:#fff;
+  word-wrap: break-word;
+}
+
+#owl-portfolio {
+  padding-bottom:40px;
+}
+
+/*#sync2 .item {
   height:auto;
   padding: 10px;
   color: #fff;
   word-wrap: break-word;
 }
 
-#sync2 {margin-top:-10px;}
+#sync2 .owl-wrapper {
+  width:100%;
+}*/
+
+.owl-carousel .owl-wrapper-outer{
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background:#000;
+}
+
+.owl-theme .owl-controls .owl-buttons div {
+  margin:0;
+  padding:0;
+}
 
 .owl-prev, .owl-next {
   position:absolute;
-  top:50%;
-  padding:5px;
-  margin:0;
   z-index:3;
   font-size:3rem;
   cursor:pointer;
-  color:#555; 
+  color:#555;
 }
 
 .owl-prev {
-  left:-60px;
+  left:-50px;
 }
 
 .owl-next {
-  right:-60px;
+  right:-50px;
+}
+
+.owl-prev span, .owl-next span {
+  top:50%;
 }
 
 @media (max-width:767px) {
-  .owl-prev {left:-34px;}
-  .owl-next {right:-34px;}
+  .owl-prev {left:-28px;}
+  .owl-next {right:-28px;}
 }
 
 .owl-theme .owl-controls .owl-buttons div{
@@ -314,18 +339,21 @@ a:focus {outline:0;}
   zoom: 1;
   *display: inline;/*IE7 life-saver */
   font-size: 3rem;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  border-radius: 0px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
   background: transparent;
   filter: Alpha(Opacity=100);/*IE7 fix*/
   opacity: 1;
-  margin-top:-32px;
 }
 
 .owl-theme .owl-controls .owl-buttons div:hover {
   color:#2a6496;
   }
+
+/*.owl-theme .owl-controls .owl-pagination {
+  position:relative;
+}*/
 
 /*.carousel-caption {
   bottom:10%;
@@ -403,6 +431,7 @@ address .fa {
 .github{color:#4183c4;}
 .twitter{color:#00aced;}
 .facebook{color:#3b5998;}
+.skype{color:#12a5f4;}
 
 
 .wrapper         {width:100%;max-width:400px;height:100%;max-height:300px;margin:0 auto;background-color:#222;}
@@ -477,7 +506,7 @@ footer p {margin:0;padding-right:1rem;}
     top:10px;
   }
 
-  .reel {width:135px;margin:0 auto;}
+  .reel {width:180px;margin:0 auto;}
 
   address .fa {
     margin:0;

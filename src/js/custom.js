@@ -78,10 +78,9 @@
 
 $(document).ready(function() {
  
-  var sync1 = $("#sync1");
-  var sync2 = $("#sync2");
+  var owl = $("#owl-portfolio");
  
-  sync1.owlCarousel({
+  owl.owlCarousel({
     autoplay : false,
     singleItem : true,
     slideSpeed : 500,
@@ -91,82 +90,45 @@ $(document).ready(function() {
       "<span class='fa fa-chevron-circle-left'></span>",
       "<span class='fa fa-chevron-circle-right'></span>"
       ],
-    pagination:false,
-    afterAction : syncPosition,
-    responsiveRefreshRate : 200,
-  });
- 
-  sync2.owlCarousel({
-    items : 1,
-    autoplay : false,
-    singleItem : true,
-    slideSpeed : 500,
-    rewindSpeed : 500,
-    navigation: false,
     pagination:true,
-    mouseDrag : false,
-    touchDrag : false,
+    lazyLoad: true,
     responsiveRefreshRate : 200,
-
-    afterInit : function(el){
-      el.find(".owl-item").eq(0).addClass("synced");
-    }
   });
-
-  $('.item a').on('click', function(event){
-    var href = $(this).attr('href');
-    window.location = href;
-  });
-
-  function syncPosition(el){
-    var current = this.currentItem;
-    $("#sync2")
-      .find(".owl-item")
-      .removeClass("synced")
-      .eq(current)
-      .addClass("synced")
-    if($("#sync2").data("owlCarousel") !== undefined){
-      center(current)
-    }
-  }
- 
-  $("#sync2").on("click", ".owl-item", function(e){
-    e.preventDefault();
-    var number = $(this).data("owlItem");
-    sync1.trigger("owl.goTo",number);
-  });
- 
-  function center(number){
-    var sync2visible = sync2.data("owlCarousel").owl.visibleItems;
-    var num = number;
-    var found = false;
-    for(var i in sync2visible){
-      if(num === sync2visible[i]){
-        var found = true;
-      }
-    }
- 
-    if(found===false){
-      if(num>sync2visible[sync2visible.length-1]){
-        sync2.trigger("owl.goTo", num - sync2visible.length+1)
-      }else{
-        if(num - 1 === -1){
-          num = 0;
-        }
-        sync2.trigger("owl.goTo", num);
-      }
-    } else if(num === sync2visible[sync2visible.length-1]){
-      sync2.trigger("owl.goTo", sync2visible[1])
-    } else if(num === sync2visible[0]){
-      sync2.trigger("owl.goTo", num-1)
-    }
-    
-  }
- 
 });
 
+var waitForFinalEvent = (function () {
+  var timers = {};
+  return function (callback, ms, uniqueId) {
+    if (!uniqueId) {
+      uniqueId = "Don't call this twice without a uniqueId";
+    }
+    if (timers[uniqueId]) {
+      clearTimeout (timers[uniqueId]);
+    }
+    timers[uniqueId] = setTimeout(callback, ms);
+  };
+})();
 
+    $(document).ready(function() {
+        var imgHeight = $("#getHeight").height();
 
+        var myElements = document.querySelectorAll(".owl-prev, .owl-next");
+
+        for (var i = 0; i < myElements.length; i++) {
+            myElements[i].style.top = imgHeight/2-32+"px"; 
+        }
+
+      $(window).resize(function() {
+          waitForFinalEvent(function(){
+            var imgHeight = $("#getHeight").height();
+     
+            for (var i = 0; i < myElements.length; i++) {
+                myElements[i].style.top =  imgHeight/2-32+"px";
+            }
+          }, 200, "un");
+          });
+        });
+        $(window).trigger('resize');
 
 
         // Collapse Bootstrap navbar when anywhere on page is clicked
@@ -194,9 +156,10 @@ $(document).ready(function() {
         function preventDefault(e) {
           e = e || window.event;
           if (e.preventDefault)
-              e.preventDefault();
+              {e.preventDefault();
           e.returnValue = false;  
         }
+      }
 
         function keydown(e) {
             for (var i = keys.length; i--;) {

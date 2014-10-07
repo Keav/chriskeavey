@@ -8,8 +8,8 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     clean: {
-      build: ['dist']
-    }
+      build: ['dist/*']
+    },
 
     imagemin: {
       dist: {
@@ -19,22 +19,13 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'dist/',
-            src: ['images/**/*.jpg'],
-            dest: 'dist/',
-            ext: '.jpg'
+            cwd: 'src/',
+            src: ['**/*.jpg', '**/*.png', '**/*.gif'],
+            dest: 'dist/'
           },
-          {
-            expand: true,
-            cwd: 'dist/',
-            src: ['images/**/*.png'],
-            dest: 'dist/',
-            ext: '.png'
-          }
         ]
       }
     },
-    
 
     htmlhint: {
     build: {
@@ -49,9 +40,9 @@ module.exports = function(grunt) {
             'head-script-disabled': true,
             'style-disabled': true
         },
-        src: ['index.html']
+        src: ['src/index.html']
       }
-    }
+    },
 
     htmlmin: {                                     // Task
     dist: {                                      // Target
@@ -60,16 +51,10 @@ module.exports = function(grunt) {
         collapseWhitespace: true
       },
       files: {                                   // Dictionary of files
-        'dist/index.html': 'src/index.html',     // 'destination': 'source'
-        'dist/contact.html': 'src/contact.html'
+        'dist/index.html': 'src/index.html'     // 'destination': 'source'
+
       }
     },
-    dev: {                                       // Another target
-      files: {
-        'dist/index.html': 'src/index.html',
-        'dist/contact.html': 'src/contact.html'
-      }
-    }
   },
 
     sass: {
@@ -78,7 +63,7 @@ module.exports = function(grunt) {
             'build/css/master.css': 'assets/sass/master.scss'
         }
       }
-    }
+    },
 
     cssc: {
     build: {
@@ -98,37 +83,30 @@ module.exports = function(grunt) {
         options: {
           banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
         },
-        files: {
-          'dist/css/custom.min.css' : ['src/css/custom.css'],
-          'dist/css/animations.min.css' : ['src/css/animations.css']
-        }
+      },
+      build: {
+        files: [{
+          expand: true,
+          cwd: 'src/',
+          src: ['**/*.css', '!**/*.min.css', '!**/*.map'],
+          dest: 'dist/',
+          ext: '.min.css',
+          extDot: 'last'
+        }]
       }
     },
 
     jshint: {
-       options: {
-          "bitwise": true,
-          "browser": true,
-          "curly": true,
-          "eqeqeq": true,
-          "eqnull": true,
-          "esnext": true,
-          "immed": true,
-          "jquery": true,
-          "latedef": true,
-          "newcap": true,
-          "noarg": true,
-          "node": true,
-          "strict": false,
-          "trailing": true,
-          "undef": true,
-          "globals": {
-             "jQuery": true,
-             "alert": true
-          }
-       },
-       dist: ['Gruntfile.js','src/js/custom.js'
-       ]
+      options: {
+        curly: true,
+        eqeqeq: true,
+        eqnull: true,
+        browser: true,
+        globals: {
+          jQuery: true
+        },
+      },
+      uses_defaults: ['src/js/custom.js', 'Gruntfile.js'],
     },
 
     uglify: {
@@ -136,61 +114,83 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        files: {
-          'dist/js/custom.min.js' : 'src/js/custom.js'
-        }
+        files: [{
+          expand: true,
+          cwd: 'src/',
+          src: ['**/*.js', '!**/*.min.js'],
+          dest: 'dist/',
+          ext: '.min.js',
+          extDot: 'last'
+        }]
       }
     },
 
-    hash: {
+    hashres: {
       options: {
-          //mapping: 'examples/assets.json', //mapping file so your server can serve the right files
-          //srcBasePath: 'examples/', // the base Path you want to remove from the `key` string in the mapping file
-          //destBasePath: 'out/', // the base Path you want to remove from the `value` string in the mapping file
-          //flatten: false, // Set to true if you don't want to keep folder structure in the `key` value in the mapping file
-          hashLength: 10, // hash length, the max value depends on your hash function
-          hashFunction: function(source, encoding){ // default is md5
-              return require('crypto').createHash('md5').update(source, encoding).digest('hex');
-          }
+        encoding: 'utf8',
+        fileNameFormat: '${name}.${hash}.${ext}',
+        renameFiles: true
       },
-      css: {
-          src: 'src/css/custom.css',  //all your css that needs a hash appended to it
-          dest: 'dist/css/' //where the new files will be created
+      min: {
+        // Specific options, override the global ones
+        options: {
+         // You can override encoding, fileNameFormat or renameFiles
+         fileNameFormat: '${name}.min.${ext}',
+        renameFiles: false
+        },
+        // Files to hash
+        src: [
+          // WARNING: These files will be renamed!
+          'src/**/*.css', 'src/**/*.js', '!**/*.min.*'],
+        // File that refers to above files and needs to be updated with the hashed name
+        dest: 'dist/index.html',
       },
-      js: {
-          src: 'src/js/custom.custom',  //all your css that needs a hash appended to it
-          dest: 'dist/js/' //where the new files will be created
+      prod: {
+        // Specific options, override the global ones
+        options: {
+         // You can override encoding, fileNameFormat or renameFiles
+        },
+        // Files to hash
+        src: [
+          // WARNING: These files will be renamed!
+          'dist/css/custom.min.css',
+          'dist/js/custom.min.js'],
+        // File that refers to above files and needs to be updated with the hashed name
+        dest: 'dist/index.html',
       }
     },
 
-    cachebreaker: {
-      css: {
-          options: {
-              match: ['custom.css'],
-              replacement: 'md5',
-              position: 'filename',
-              src: {
-                  path: 'src/css/custom.css'
-              }
-          },
-          files: {
-              src: ['dist/index.html']
-              }
-          },
-
-      js: {
-          options: {
-              match: ['custom.js'],
-              replacement: 'md5',
-              position: 'filename',
-              src: {
-                  path: 'src/js/custom.js'
-              }
-          },
-          files: {
-              src: ['dist/index.html']
-          }
-      }
+    copy: {
+      main: {
+        files: [{
+          expand: true,
+          cwd: 'src/',
+          src: [
+                '**/*',
+                '!**/*.css',
+                '!**/*.js',
+                '!**/*.html',
+                '!**/*.scss',
+                '!**/*.less',
+                '!**/*.php',
+                '!**/*.map',
+                '!**/*.jpg',
+                '!**/*.png',
+                '!**/*.gif',
+                '!**/less/**',
+                '!**/scss/**'
+                ],
+          dest: 'dist/',
+        }]
+      },
+      jquery: {
+        files: [{
+          expand: true,
+          cwd: 'src/',
+          src: ['js/jquery-2.1.1.min.js'],
+          dest: 'dist/',
+        }]
+      },
     },
 
     shell: {
@@ -200,40 +200,34 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      html: {
-        files: ['index.html'],
-        tasks: ['htmlhint']
-      }
-      js: {
-        files: ['src/js/custom.js', 'src/owl-carousel/owl-carousel.js'],
-        tasks: ['uglify']
-      }
-      css: {
-        files: ['src/css/custom.css', 'src/owl-carousel/owl-carousel.css'],
-        tasks: ['buildcss']
-      }
+      proj: {
+        files: ['**/*'],
+        tasks: ['all']
+      },
     }
 
   });
 
-
-  // Load the plugin that provides the "uglify" task.
-  // grunt.loadNpmTasks('grunt-contrib-cssmin');
-  // grunt.loadNpmTasks('grunt-contrib-uglify');
-  // grunt.loadNpmTasks('grunt-hash');
-  // grunt.loadNpmTasks('grunt-cache-breaker');
-  // grunt.loadNpmTasks('grunt-contrib-watch');
-
   // Default task(s).
   grunt.registerTask('default', ['watch']);
   
+  // HTML tasks.
+  grunt.registerTask('buildhtml',  ['htmlhint']);
+
   // CSS tasks.
   grunt.registerTask('buildcss',  ['sass', 'cssc', 'cssmin']);
   
   // Cache busting tasks.
-  grunt.registerTask('cachebust', ['hash', 'cachebreaker']);
+  // grunt.registerTask('cachebust', ['cachebreaker', 'hash']);
 
   // Bump release version numbers
-  grunt.registerTask('release', ['shell:bumpVersion']); 
+  grunt.registerTask('release', ['shell:bumpVersion']);
+
+  grunt.registerTask('distcode', ['clean', 'htmlmin', 'uglify', 'cssmin', 'hashres', 'copy']);
+
+  // Interim Deployment
+  grunt.registerTask('all', ['clean', 'htmlmin', 'uglify', 'cssmin', 'hashres', 'imagemin', 'copy']);
+
+  grunt.registerTask('copysrc', ['clean', 'copy']);
 
 };
