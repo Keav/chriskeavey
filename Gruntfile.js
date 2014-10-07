@@ -1,20 +1,112 @@
 module.exports = function(grunt) {
 
+  require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
+
   // Project configuration.
   grunt.initConfig({
 
     pkg: grunt.file.readJSON('package.json'),
 
+    clean: {
+      build: ['dist/*']
+    },
+
+    imagemin: {
+      dist: {
+        options: {
+          optimizationLevel: 3
+        },
+        files: [
+          {
+            expand: true,
+            cwd: 'src/',
+            src: ['**/*.jpg', '**/*.png', '**/*.gif'],
+            dest: 'dist/'
+          },
+        ]
+      }
+    },
+
+    htmlhint: {
+    build: {
+        options: {
+            'tag-pair': true,
+            'tagname-lowercase': true,
+            'attr-lowercase': true,
+            'attr-value-double-quotes': true,
+            'doctype-first': true,
+            'spec-char-escape': true,
+            'id-unique': true,
+            'head-script-disabled': true,
+            'style-disabled': true
+        },
+        src: ['src/index.html']
+      }
+    },
+
+    htmlmin: {                                     // Task
+    dist: {                                      // Target
+      options: {                                 // Target options
+        removeComments: true,
+        collapseWhitespace: true
+      },
+      files: {                                   // Dictionary of files
+        'dist/index.html': 'src/index.html'     // 'destination': 'source'
+
+      }
+    },
+  },
+
+    sass: {
+    build: {
+        files: {
+            'build/css/master.css': 'assets/sass/master.scss'
+        }
+      }
+    },
+
+    cssc: {
+    build: {
+        options: {
+            consolidateViaDeclarations: true,
+            consolidateViaSelectors:    true,
+            consolidateMediaQueries:    true
+        },
+        files: {
+            'dist/css/master.css': 'src/css/master.css'
+        }
+      }
+    },
+
     cssmin: {
       add_banner: {
         options: {
-          banner: '/* My minified css file */'
+          banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
         },
-        files: {
-          'dist/css/custom.min.css' : ['src/css/custom.css'],
-          'src/css/custom.min.css' : ['src/css/custom.css']
-        }
+      },
+      build: {
+        files: [{
+          expand: true,
+          cwd: 'src/',
+          src: ['**/*.css', '!**/*.min.css', '!**/*.map'],
+          dest: 'dist/',
+          ext: '.min.css',
+          extDot: 'last'
+        }]
       }
+    },
+
+    jshint: {
+      options: {
+        curly: true,
+        eqeqeq: true,
+        eqnull: true,
+        browser: true,
+        globals: {
+          jQuery: true
+        },
+      },
+      uses_defaults: ['src/js/custom.js', 'Gruntfile.js'],
     },
 
     uglify: {
@@ -22,65 +114,120 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        files: {
-          'dist/js/custom.min.js' : 'src/js/custom.js',
-          'src/js/custom.min.js' : 'src/js/custom.js',
-        }
+        files: [{
+          expand: true,
+          cwd: 'src/',
+          src: ['**/*.js', '!**/*.min.js'],
+          dest: 'dist/',
+          ext: '.min.js',
+          extDot: 'last'
+        }]
       }
     },
 
-    hash: {
+    hashres: {
       options: {
-          //mapping: 'examples/assets.json', //mapping file so your server can serve the right files
-          //srcBasePath: 'examples/', // the base Path you want to remove from the `key` string in the mapping file
-          //destBasePath: 'out/', // the base Path you want to remove from the `value` string in the mapping file
-          //flatten: false, // Set to true if you don't want to keep folder structure in the `key` value in the mapping file
-          hashLength: 10, // hash length, the max value depends on your hash function
-          hashFunction: function(source, encoding){ // default is md5
-              return require('crypto').createHash('md5').update(source, encoding).digest('hex');
-          }
+        encoding: 'utf8',
+        fileNameFormat: '${name}.${hash}.${ext}',
+        renameFiles: true
       },
-      css: {
-          src: 'src/css/custom.css',  //all your css that needs a hash appended to it
-          dest: 'dist/css/' //where the new files will be created
+      min: {
+        // Specific options, override the global ones
+        options: {
+         // You can override encoding, fileNameFormat or renameFiles
+         fileNameFormat: '${name}.min.${ext}',
+        renameFiles: false
+        },
+        // Files to hash
+        src: [
+          // WARNING: These files will be renamed!
+          'src/**/*.css', 'src/**/*.js', '!**/*.min.*'],
+        // File that refers to above files and needs to be updated with the hashed name
+        dest: 'dist/index.html',
+      },
+      prod: {
+        // Specific options, override the global ones
+        options: {
+         // You can override encoding, fileNameFormat or renameFiles
+        },
+        // Files to hash
+        src: [
+          // WARNING: These files will be renamed!
+          'dist/css/custom.min.css',
+          'dist/js/custom.min.js'],
+        // File that refers to above files and needs to be updated with the hashed name
+        dest: 'dist/index.html',
       }
     },
 
-    cachebreaker: {
-      dev: {
-          options: {
-              match: ['custom.css'],
-              replacement: 'md5',
-              position: 'filename',
-              src: {
-                  path: 'src/css/custom.css'
-              }
-          },
-          files: {
-              src: ['dist/index.html']
-          }
+    copy: {
+      main: {
+        files: [{
+          expand: true,
+          cwd: 'src/',
+          src: [
+                '**/*',
+                '!**/*.css',
+                '!**/*.js',
+                '!**/*.html',
+                '!**/*.scss',
+                '!**/*.less',
+                '!**/*.php',
+                '!**/*.map',
+                '!**/*.jpg',
+                '!**/*.png',
+                '!**/*.gif',
+                '!**/less/**',
+                '!**/scss/**'
+                ],
+          dest: 'dist/',
+        }]
+      },
+      jquery: {
+        files: [{
+          expand: true,
+          cwd: 'src/',
+          src: ['js/jquery-2.1.1.min.js'],
+          dest: 'dist/',
+        }]
+      },
+    },
+
+    shell: {
+      bumpVersion: {
+        command: 'npm version patch'
       }
     },
 
     watch: {
-      files: ['src/js/custom.js', 'src/css/custom.css'],
-      tasks: ['uglify', 'cssmin'],
+      proj: {
+        files: ['**/*'],
+        tasks: ['all']
+      },
     }
 
   });
 
-
-  // Load the plugin that provides the "uglify" task.
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-hash');
-  grunt.loadNpmTasks('grunt-cache-breaker');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-
   // Default task(s).
-  grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('default', ['watch']);
+  
+  // HTML tasks.
+  grunt.registerTask('buildhtml',  ['htmlhint']);
 
-  // My tasks.
-  grunt.registerTask('versioning', ['hash', 'cachebreaker']);
+  // CSS tasks.
+  grunt.registerTask('buildcss',  ['sass', 'cssc', 'cssmin']);
+  
+  // Cache busting tasks.
+  // grunt.registerTask('cachebust', ['cachebreaker', 'hash']);
+
+  // Bump release version numbers
+  grunt.registerTask('release', ['shell:bumpVersion']);
+
+  grunt.registerTask('distcode', ['clean', 'htmlmin', 'uglify', 'cssmin', 'hashres', 'copy']);
+
+  // Interim Deployment
+  grunt.registerTask('all', ['clean', 'htmlmin', 'uglify', 'cssmin', 'hashres', 'imagemin', 'copy']);
+
+  grunt.registerTask('copysrc', ['clean', 'copy']);
 
 };
