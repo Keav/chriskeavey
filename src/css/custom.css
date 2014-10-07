@@ -285,17 +285,6 @@ a:focus {outline:0;}
   padding-bottom:40px;
 }
 
-/*#sync2 .item {
-  height:auto;
-  padding: 10px;
-  color: #fff;
-  word-wrap: break-word;
-}
-
-#sync2 .owl-wrapper {
-  width:100%;
-}*/
-
 .owl-carousel .owl-wrapper-outer{
   overflow: hidden;
   position: relative;

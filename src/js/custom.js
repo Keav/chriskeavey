@@ -131,6 +131,28 @@ var waitForFinalEvent = (function () {
         $(window).trigger('resize');
 
 
+        $(document).ready(function() {
+        var imgHeight = $("#getHeight").height();
+
+        var myElements = document.querySelectorAll("#setHeight");
+
+        for (var i = 0; i < myElements.length; i++) {
+            myElements[i].style.height = imgHeight+"px"; 
+        }
+
+      $(window).resize(function() {
+          waitForFinalEvent(function(){
+            var imgHeight = $("#getHeight").height();
+     
+            for (var i = 0; i < myElements.length; i++) {
+                myElements[i].style.height =  imgHeight+"px";
+            }
+          }, 200, "uni");
+          });
+        });
+        $(window).trigger('resize');
+
+
         // Collapse Bootstrap navbar when anywhere on page is clicked
         $(document).ready(function() { 
 
