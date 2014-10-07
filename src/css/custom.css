@@ -107,19 +107,19 @@ a:focus {outline:0;}
 
 @media (max-width: 767px) {
   .splash-background {
-    background-image:url('../images/bgx17gs.jpg');
+    background-image:url('../images/bggs_768.jpg');
     }
 }
 
 @media (min-width:768px) {
   .splash-background {
-    background-image:url('../images/bgx17gs.jpg');
+    background-image:url('../images/bggs_1024.jpg');
     }
 }
 
 @media (min-width:1200px) {
   .splash-background {
-    background-image:url('../images/bgx17gs.jpg');
+    background-image:url('../images/bggs_1800.jpg');
     }
 }
 
