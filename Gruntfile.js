@@ -187,7 +187,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'src/',
-          src: ['js/jquery-2.1.1.min.js'],
+          src: ['js/jquery**.min.js'],
           dest: 'dist/',
         }]
       },
@@ -226,7 +226,7 @@ module.exports = function(grunt) {
   grunt.registerTask('distcode', ['clean', 'htmlmin', 'uglify', 'cssmin', 'hashres', 'copy']);
 
   // Interim Deployment
-  grunt.registerTask('all', ['clean', 'htmlmin', 'uglify', 'cssmin', 'hashres', 'imagemin', 'copy']);
+  grunt.registerTask('all', ['clean', 'imagemin', 'htmlmin', 'uglify', 'cssmin', 'hashres', 'copy']);
 
   grunt.registerTask('copysrc', ['clean', 'copy']);
 
