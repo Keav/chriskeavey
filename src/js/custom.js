@@ -1,5 +1,6 @@
 /*jslint browser: true*/
 /*global $, jQuery*/
+/*jslint plusplus: true */
 
 "use strict";
 
@@ -17,9 +18,9 @@ if ($("html").hasClass("no-touch")) {
     $('html,body').removeClass('fix-background');
 }
 
-$('#js-anim').hover(function() {
+$('#js-anim').hover(function () {
     $(this).removeClass('bounce');
-}, function() {
+}, function () {
     $(this).addClass('bounce');
 });
 
@@ -43,9 +44,9 @@ $(document).ready(function () {
     });
 });
 
-var waitForFinalEvent = (function() {
+var waitForFinalEvent = (function () {
     var timers = {};
-    return function(callback, ms, uniqueId) {
+    return function (callback, ms, uniqueId) {
         if (!uniqueId) {
             uniqueId = "Don't call this twice without a uniqueId";
         }
@@ -56,20 +57,17 @@ var waitForFinalEvent = (function() {
     };
 }());
 
-$(document).ready(function() {
-    var imgHeight = $("#getHeight").height();
+$(document).ready(function () {
+    var i = 0, imgHeight = $("#getHeight").height(), myElements = document.querySelectorAll(".owl-prev, .owl-next");
 
-    var myElements = document.querySelectorAll(".owl-prev, .owl-next");
-
-    for (var i = 0; i < myElements.length; i++) {
+    for (i = 0; i < myElements.length; i++) {
         myElements[i].style.top = imgHeight / 2 - 32 + "px";
     }
 
-    $(window).resize(function() {
-        waitForFinalEvent(function() {
-            var imgHeight = $("#getHeight").height();
-
-            for (var i = 0; i < myElements.length; i++) {
+    $(window).resize(function () {
+        waitForFinalEvent(function () {
+            imgHeight = $("#getHeight").height();
+            for (i = 0; i < myElements.length; i++) {
                 myElements[i].style.top = imgHeight / 2 - 32 + "px";
             }
         }, 200, "un");
@@ -78,20 +76,17 @@ $(document).ready(function() {
 $(window).trigger('resize');
 
 
-$(document).ready(function() {
-    var imgHeight = $("#getHeight").height();
+$(document).ready(function () {
+    var i = 0, imgHeight = $("#getHeight").height(), myElements = document.querySelectorAll("#setHeight");
 
-    var myElements = document.querySelectorAll("#setHeight");
-
-    for (var i = 0; i < myElements.length; i++) {
+    for (i = 0; i < myElements.length; i++) {
         myElements[i].style.height = imgHeight + "px";
     }
 
-    $(window).resize(function() {
-        waitForFinalEvent(function() {
-            var imgHeight = $("#getHeight").height();
-
-            for (var i = 0; i < myElements.length; i++) {
+    $(window).resize(function () {
+        waitForFinalEvent(function () {
+            imgHeight = $("#getHeight").height();
+            for (i = 0; i < myElements.length; i++) {
                 myElements[i].style.height = imgHeight + "px";
             }
         }, 200, "uni");
@@ -101,8 +96,9 @@ $(window).trigger('resize');
 
 
 // Collapse Bootstrap navbar when anywhere on page is clicked
-$(document).ready(function() {
-    $("body").click(function(event) {
+/*jslint unparam:true */
+$(document).ready(function () {
+    $("body").click(function (event) {
         // only do this if navigation is visible, otherwise you see jump in navigation while collapse() is called 
         if ($(".navbar-collapse").is(":visible") && $(".navbar-toggle").is(":visible")) {
             $('.navbar-collapse').collapse('toggle');
@@ -110,10 +106,11 @@ $(document).ready(function() {
         }
     });
 
-    $(".navbar-toggle").click(function(event) {
+    $(".navbar-toggle").click(function (event) {
         $('body').addClass('pointer');
     });
 });
+/*jslint unparam:false */
 
 
 // Disable and Enable scrolling functions.
@@ -130,7 +127,8 @@ function preventDefault(e) {
 }
 
 function keydown(e) {
-    for (var i = keys.length; i--;) {
+    var i = 0;
+    for (i = keys.length; i--;) {
         if (e.keyCode === keys[i]) {
             preventDefault(e);
             return;
@@ -143,6 +141,7 @@ function wheel(e) {
 }
 
 function disable_scroll() {
+    var keydown = 0;
     if (window.addEventListener) {
         window.addEventListener('DOMMouseScroll', wheel, false);
     }
@@ -160,9 +159,8 @@ function enable_scroll() {
 
 // Navbar fading
 //Uses waypoints.js to trigger an action. In this case enabling mouse scrolling using enable_scroll(); function and adding/removing CSS classes.
-$('#js-scroll-trigger').waypoint(function(direction) {
-    //enable_scroll();
-    var z = 0;
+var z = 0;
+$('#js-scroll-trigger').waypoint(function (direction) {
     if (direction === 'down') {
         z = 0;
         $('.navbar').removeClass('fade-out navbar-hide');
@@ -171,10 +169,9 @@ $('#js-scroll-trigger').waypoint(function(direction) {
         z = 1;
         $('.navbar').removeClass('fade-in');
         $('.navbar').addClass('fade-out');
-        //setTimeout(function(){$('.navbar').addClass('navbar-hide')}, 1000);
-        $('.fade-out').one('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function() {
+        $('nav').one('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function () {
             if (z === 1) {
-                //$('.navbar').addClass('navbar-hide');
+                $('.navbar').addClass('navbar-hide');
             }
         });
     }
@@ -184,20 +181,19 @@ $('#js-scroll-trigger').waypoint(function(direction) {
 
 // Uses waypoints.js to trigger an action. In this case disabling mouse scrolling using disable_scroll(); function and scrollTop to #ID.
 // Is triggered by hrefs whether mouse is scrolled or not!!! i.e. is triggered by SCREEN movement.
-$('#js-scroll-trigger').waypoint(function(direction) {
-    var x = 0;
+var x = 0;
+$('#js-scroll-trigger').waypoint(function (direction) {
     if (!$('html, body').is(':animated') && x === 0) {
         if (direction === 'down') {
-            x = 1;
             disable_scroll();
+            x = 1;
 
             $('html, body').stop().animate({
                 scrollTop: $('#anchor-portfolio').offset().top
             }, 1000, 'easeOutQuad');
         }
     }
-    //setTimeout(function(){enable_scroll()}, 2000);
-    $('html, body').one('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function() {
+    $('html, body').one('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function () {
         if (x === 1) {
             enable_scroll();
         }
@@ -208,8 +204,8 @@ $('#js-scroll-trigger').waypoint(function(direction) {
 
 //Easing href link functions using jquery.easing.1.3.js
 //Vertical easing ".js-ver"
-$(function() {
-    $('.js-ver a').bind('click', function(event) {
+$(function () {
+    $('.js-ver a').bind('click', function (event) {
         var $anchor = $(this);
 
         $('html, body').stop().animate({
@@ -221,8 +217,8 @@ $(function() {
 });
 
 //Horizontal easing ".js-hor"
-$(function() {
-    $('.js-hor a').bind('click', function(event) {
+$(function () {
+    $('.js-hor a').bind('click', function (event) {
         var $anchor = $(this);
 
         $('html, body').stop().animate({
@@ -234,12 +230,10 @@ $(function() {
 });
 
 // Ensure page refreshes always start back at the top of the page
-$(window).on('beforeunload', function() {
-    //return "Are you sure to leave this page?";
+$(window).on('beforeunload', function () {
     $(window).scrollTop(0);
 });
 
-$(window).unload(function() {
-    //alert('unload');
+$(window).unload(function () {
     $(window).scrollTop(0);
 });
