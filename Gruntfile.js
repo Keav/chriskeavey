@@ -8,7 +8,8 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         clean: {
-            build: ['dist/*']
+            build: ['dist/css/custom**.*', 'dist/js/custom**.*'],
+
         },
 
         imagemin: {
@@ -72,6 +73,31 @@ module.exports = function(grunt) {
                 },
                 files: {
                     'dist/css/master.css': 'src/css/master.css'
+                }
+            }
+        },
+
+        uncss: {
+            options: {
+                ignore: [
+                    /(#|\.)fancybox(\-[a-zA-Z]+)?/,
+                    // needed for Bootstrap's transitions
+                    ".fade",
+                    ".fade.in",
+                    ".collapse",
+                    ".collapse.in",
+                    ".navbar-collapse",
+                    ".navbar-collapse.in",
+                    ".collapsing",
+                    // needed for the <noscript> warning; remove when fixed in uncss
+                    ".alert-danger",
+                    ".visible-xs",
+                    ".noscript-warning"
+                ],
+            },
+            dist: {
+                files: {
+                    'dist/css/tidy.css': ['src/index.html']
                 }
             }
         },
@@ -183,11 +209,11 @@ module.exports = function(grunt) {
                     dest: 'dist/',
                 }]
             },
-            jquery: {
+            others: {
                 files: [{
                     expand: true,
                     cwd: 'src/',
-                    src: ['js/jquery**.min.js'],
+                    src: ['js/jquery**.min.js', '.htaccess'],
                     dest: 'dist/',
                 }]
             },
@@ -238,7 +264,7 @@ module.exports = function(grunt) {
     grunt.registerTask('distcode', ['clean', 'htmlmin', 'uglify', 'cssmin', 'hashres', 'copy', 'string-replace']);
 
     // Interim Deployment
-    grunt.registerTask('all', ['clean', 'imagemin', 'htmlmin', 'uglify', 'cssmin', 'hashres', 'copy', 'string-replace']);
+    grunt.registerTask('all', ['clean', 'newer:imagemin', 'newer:htmlmin', 'newer:uglify', 'newer:cssmin', 'hashres', 'newer:copy', 'string-replace']);
 
     grunt.registerTask('copysrc', ['clean', 'copy']);
 
