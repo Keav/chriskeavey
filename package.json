@@ -29,6 +29,7 @@
     "grunt-hashres": "^0.4.1",
     "grunt-htmlhint": "*",
     "grunt-shell": "^1.1.1",
+    "grunt-string-replace": "^1.0.0",
     "matchdep": "*"
   }
 }

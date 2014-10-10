@@ -193,6 +193,21 @@ module.exports = function(grunt) {
             },
         },
 
+        'string-replace': {
+            inline: {
+                files: {'dist/index.html' : 'dist/index.html'},
+                options: {
+                    replacements: [
+                    // place files inline example
+                        {
+                            pattern: '</head>',
+                            replacement: '<script src="js/analytics.js" async></script></head>'
+                        }
+                    ]
+                }
+            }
+        },
+
         shell: {
             bumpVersion: {
                 command: 'npm version patch'
@@ -220,10 +235,10 @@ module.exports = function(grunt) {
     // Bump release version numbers
     grunt.registerTask('release', ['shell:bumpVersion']);
 
-    grunt.registerTask('distcode', ['clean', 'htmlmin', 'uglify', 'cssmin', 'hashres', 'copy']);
+    grunt.registerTask('distcode', ['clean', 'htmlmin', 'uglify', 'cssmin', 'hashres', 'copy', 'string-replace']);
 
     // Interim Deployment
-    grunt.registerTask('all', ['clean', 'imagemin', 'htmlmin', 'uglify', 'cssmin', 'hashres', 'copy']);
+    grunt.registerTask('all', ['clean', 'imagemin', 'htmlmin', 'uglify', 'cssmin', 'hashres', 'copy', 'string-replace']);
 
     grunt.registerTask('copysrc', ['clean', 'copy']);
 
