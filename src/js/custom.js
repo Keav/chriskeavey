@@ -7,15 +7,9 @@
 // Uses Modernizr.js to detect touch enabled devices. This method is an indelicate solution but the best I've found so far. Agent sniffing or actual property testing resulted in inconsisstent results.
 //It then disables the CSS 'background-attachment:fixed;' property. This because fixed backgrounds don't play nicely on iOS devices when scrolling. iOS freezes all animations/transitons until the scroll is finished rather than animating them as the page scrolls.
 if ($("html").hasClass("no-touch")) {
-    //alert('Desktop');
-    $('.splash-background').addClass('fix-background');
-    $('.divider-image-cover').addClass('fix-background');
-    $('html,body').addClass('fix-background');
+    $('.splash-background, .divider-image-cover, html, body').addClass('fix-background');
 } else {
-    //alert('Mobile')
-    $('.splash-background').removeClass('fix-background');
-    $('.divider-image-cover').removeClass('fix-background');
-    $('html,body').removeClass('fix-background');
+    $('.splash-background, .divider-image-cover, html, body').removeClass('fix-background');
 }
 
 $('#js-anim').hover(function () {
@@ -156,22 +150,28 @@ function enable_scroll() {
     window.onmousewheel = document.onmousewheel = document.onkeydown = null;
 }
 
-
 // Navbar fading
 //Uses waypoints.js to trigger an action. In this case enabling mouse scrolling using enable_scroll(); function and adding/removing CSS classes.
 var z = 0;
 $('#js-scroll-trigger').waypoint(function (direction) {
+    var el = '.navbar';
     if (direction === 'down') {
+
+        $(el).removeClass('fade-out navbar-hide');
+        $(el).addClass('fade-in');
         z = 0;
-        $('.navbar').removeClass('fade-out navbar-hide');
-        $('.navbar').addClass('fade-in');
+
     } else {
+
+        $(el).removeClass('fade-in');
+        $(el).addClass('fade-out');
         z = 1;
-        $('.navbar').removeClass('fade-in');
-        $('.navbar').addClass('fade-out');
-        $('nav').one('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function () {
+
+        $(el).on('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function () {
             if (z === 1) {
-                $('.navbar').addClass('navbar-hide');
+                $(el).addClass('navbar-hide');
+                z = 0;
+                $(el).off('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd');
             }
         });
     }
@@ -179,28 +179,31 @@ $('#js-scroll-trigger').waypoint(function (direction) {
     offset: '0%'
 });
 
-// Uses waypoints.js to trigger an action. In this case disabling mouse scrolling using disable_scroll(); function and scrollTop to #ID.
-// Is triggered by hrefs whether mouse is scrolled or not!!! i.e. is triggered by SCREEN movement.
+
+//Uses waypoints.js to trigger an action. In this case disabling mouse scrolling using disable_scroll(); function and scrollTop to #ID.
+//Is triggered by hrefs whether mouse is scrolled or not!!! i.e. is triggered by SCREEN movement.
 var x = 0;
 $('#js-scroll-trigger').waypoint(function (direction) {
-    if (!$('html, body').is(':animated') && x === 0) {
-        if (direction === 'down') {
-            disable_scroll();
-            x = 1;
+    if (!$('html, body').is(':animated') && (direction === 'down') && x === 0) {
+        disable_scroll();
+        x = 1;
 
-            $('html, body').stop().animate({
-                scrollTop: $('#anchor-portfolio').offset().top
-            }, 1000, 'easeOutQuad');
-        }
+        $('html, body').stop().animate({
+            scrollTop: $('#anchor-portfolio').offset().top
+        }, 1000, 'easeOutQuad');
     }
-    $('html, body').one('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function () {
-        if (x === 1) {
+
+    if (x === 1) {
+        // Using 'body' instead of '.navbar' fires for all occuring transitions i.e. fires multiple times.
+        // Perhaps detect position of page rather than transitions?
+        $('.navbar').on('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function () {
             enable_scroll();
-        }
-    });
-}, {
-    offset: '100%'
-});
+            x = 2;
+            $('.navbar').off('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd');
+        });
+    }
+}, {offset: '100%'});
+
 
 //Easing href link functions using jquery.easing.1.3.js
 //Vertical easing ".js-ver"
