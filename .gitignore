@@ -232,3 +232,4 @@ BingSiteAuth.xml
 !dist/
 !src/
 node_modules/
+!robots.txt
