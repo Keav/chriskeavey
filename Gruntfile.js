@@ -23,7 +23,42 @@ module.exports = function(grunt) {
                     src: ['**/*.jpg', '**/*.png', '**/*.gif'],
                     dest: 'dist/'
                 }, ]
+            },
+            test: {
+                options: {
+                    optimizationLevel: 3
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'dist/temp/',
+                    src: ['**/*.jpg', '**/*.png', '**/*.gif'],
+                    dest: 'dist/temp/min/'
+                }, ]
             }
+        },
+
+        responsive_images: {
+            resimg: {
+                options: {
+                    newFilesOnly: false,
+                    engine: 'im',
+                    quality: 80,
+                    upscale: false,
+                    sizes: [{
+                        width: 320
+                    }, {
+                        width: 768
+                    }, {
+                        width: 1024
+                    }]
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'dist/',
+                    src: ['**/*.{jpg,gif,png}'],
+                    dest: 'dist/temp/'
+                }]
+            },
         },
 
         htmlhint: {
@@ -241,9 +276,12 @@ module.exports = function(grunt) {
         },
 
         watch: {
-            proj: {
-                files: ['**/*'],
-                tasks: ['all']
+            options: {
+                livereload: true
+            },
+            task: {
+                files: ['src/**/*'],
+            //    tasks: [''],
             },
         }
 
@@ -261,7 +299,7 @@ module.exports = function(grunt) {
     // Bump release version numbers
     grunt.registerTask('release', ['shell:bumpVersion']);
 
-    grunt.registerTask('distcode', ['clean', 'htmlmin', 'uglify', 'cssmin', 'hashres', 'copy', 'string-replace']);
+    grunt.registerTask('distcode', ['clean', 'newer:htmlmin', 'newer:uglify', 'newer:cssmin', 'hashres', 'newer:copy', 'string-replace']);
 
     // Interim Deployment
     grunt.registerTask('all', ['clean', 'newer:imagemin', 'newer:htmlmin', 'newer:uglify', 'newer:cssmin', 'hashres', 'newer:copy', 'string-replace']);
