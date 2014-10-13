@@ -127,8 +127,14 @@ module.exports = function(grunt) {
                     // needed for the <noscript> warning; remove when fixed in uncss
                     ".alert-danger",
                     ".visible-xs",
-                    ".noscript-warning"
+                    ".noscript-warning",
+                    ".fadeIn",
+                    ".fade-in",
+                    ".fade-out",
                 ],
+                report: 'min',
+                timeout: 1000,
+                ignoreSheets: ['/fonts.googleapis/'],
             },
             dist: {
                 files: {
@@ -262,7 +268,7 @@ module.exports = function(grunt) {
                     // place files inline example
                         {
                             pattern: '</head>',
-                            replacement: '<script src="js/analytics.js" async></script></head>'
+                            replacement: '<script src="js/analytics.min.js" async></script></head>'
                         }
                     ]
                 }
