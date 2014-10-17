@@ -40,7 +40,7 @@ body {
   visibility: hidden;
 }
 
-.pointer {cursor: pointer;}
+/*.pointer {cursor: pointer;}*/
 
 /*html, body {height:100%;}*/
 
@@ -304,7 +304,7 @@ a:focus {outline:0;}
   position:absolute;
   z-index:3;
   font-size:3rem;
-  cursor:pointer;
+/*  cursor:pointer;*/
   color:#555;
 }
 

@@ -233,3 +233,4 @@ BingSiteAuth.xml
 !src/
 node_modules/
 !robots.txt
+.sass-cache
