@@ -40,7 +40,7 @@ body {
   visibility: hidden;
 }
 
-.pointer {cursor: pointer;}
+/*.pointer {cursor: pointer;}*/
 
 /*html, body {height:100%;}*/
 
@@ -49,7 +49,7 @@ body {
 /*div[class^='col-'], div[class*=' col-'] {padding:0;margin:0 auto;}*/
 
 .navbar .container-fluid {background-color:transparent;}
- 
+
 a:focus {outline:0;}
 
 /*.navbar-collapse {overflow:hidden;}*/
@@ -71,7 +71,7 @@ a:focus {outline:0;}
 
 .splash {
   position:absolute;
-  z-index:1;
+  /*z-index:1;*/
   top:50%;
   left:50%;
   width:360px;
@@ -85,7 +85,7 @@ a:focus {outline:0;}
   font-size:3rem;
   line-height:100px;
   opacity:0;
-  
+
   /*-webkit-transform-origin:100% 100%;
       -ms-transform-origin:100% 100%;
           transform-origin:100% 100%;*/
@@ -143,7 +143,7 @@ a:focus {outline:0;}
 
 .pagedown {
   position:absolute;
-  z-index:2;
+  /*z-index:2;*/
   bottom:20px;
   left:0;
   width:100%;
@@ -285,11 +285,14 @@ a:focus {outline:0;}
   padding-bottom:40px;
 }
 
-.owl-carousel .owl-wrapper-outer{
+.owl-carousel .owl-wrapper-outer {
   overflow: hidden;
   position: relative;
   width: 100%;
-  background:#000;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(80%,rgba(0,0,0,1)), color-stop(100%,rgba(0,0,0,0.6)));
+  background: -webkit-linear-gradient(top, rgba(0,0,0,1) 80%, rgba(0,0,0,0.6) 100%);
+  background: linear-gradient(to bottom,  rgba(0,0,0,1) 80%,rgba(0,0,0,0.6) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
 }
 
 .owl-theme .owl-controls .owl-buttons div {
@@ -301,7 +304,7 @@ a:focus {outline:0;}
   position:absolute;
   z-index:3;
   font-size:3rem;
-  cursor:pointer;
+/*  cursor:pointer;*/
   color:#555;
 }
 
@@ -328,8 +331,6 @@ a:focus {outline:0;}
   zoom: 1;
   *display: inline;/*IE7 life-saver */
   font-size: 3rem;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
   border-radius: 0;
   background: transparent;
   filter: Alpha(Opacity=100);/*IE7 fix*/
@@ -408,7 +409,8 @@ address .fa {
 }
 
 .reel > ul > li:hover{
-  transform:translate(0,-40px);
+  -webkit-transform:translate(0,-40px);
+          transform:translate(0,-40px);
 }
 
 .reel ul li {
@@ -421,6 +423,7 @@ address .fa {
 .twitter{color:#00aced;}
 .facebook{color:#3b5998;}
 .skype{color:#12a5f4;}
+.blog{color:#efa400;}
 
 
 .wrapper         {width:100%;max-width:400px;height:100%;max-height:300px;margin:0 auto;background-color:#222;}
@@ -463,7 +466,7 @@ footer p {margin:0;padding-right:1rem;}
 //                      //
 // Media Query Section  //
 //                      //
-========================== 
+==========================
 */
 
 @media (max-width:767px) {
@@ -495,7 +498,7 @@ footer p {margin:0;padding-right:1rem;}
     top:10px;
   }
 
-  .reel {width:180px;margin:0 auto;}
+  .reel {width:225px;margin:0 auto;}
 
   address .fa {
     margin:0;

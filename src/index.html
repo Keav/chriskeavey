@@ -6,23 +6,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
         <meta name="apple-mobile-web-app-capable" content="yes">
 
-        <meta name="robots" content="noindex">
-        <meta name="robots" content="nofollow">
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="http://chriskeavey.com" />
+
+        <meta name="description" content="Chris Keavey is a freelance web developer from Bristol in the United Kingdom. He builds responsive websites for individuals and small businesses." />
+
+        <link rel="alternate" hreflang="en-GB" href="http://chriskeavey.com/" />
 
         <title>Chris Keavey</title>
-        
+
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300">
-        
-        <link rel="stylesheet" href="font-awesome-4.2.0/css/font-awesome.css">
-        
+
+        <link rel="stylesheet" href="font-awesome-4.2.0/css/font-awesome.css" async>
+
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/bootstrap-theme.css">
 
         <link rel="stylesheet" href="css/animations.css">
 
-        <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
-        <link rel="stylesheet" href="owl-carousel/owl.theme.css">
-        <link rel="stylesheet" href="owl-carousel/owl.transitions.css">
+        <link rel="stylesheet" href="owl-carousel/owl.carousel.css" async>
+        <link rel="stylesheet" href="owl-carousel/owl.theme.css" async>
+        <link rel="stylesheet" href="owl-carousel/owl.transitions.css" async>
 
         <link rel="stylesheet" href="css/custom.css">
 
@@ -35,7 +39,7 @@
 
     <body id="anchor-home">
 
-        <a href="https://github.com/Keav"><img class="forkme hidden-xs" src="images/github_forkme_right_orange.png" alt="Fork me on GitHub"></a>
+        <a href="https://github.com/Keav/chriskeavey.com"><img class="forkme hidden-xs" src="images/github_forkme_right_orange.png" alt="Fork me on GitHub"></a>
 
         <header class="landing js-ver">
             <div class="splash-background fadeIn"></div>
@@ -48,9 +52,9 @@
             <div class="pagedown fadeIn"><a href="#anchor-portfolio"><span class="fa fa-chevron-down bounce" id="js-anim"></span></a></div>
         </header>
 
-<!-- ABOVE THE FOLD CONTENT END ********************************************************************** -->
+<!-- ABOVE THE FOLD CONTENT END ********************************************************************* -->
 
-<!-- NAVBAR ****************************************************************************************** -->
+<!-- NAVBAR ***************************************************************************************** -->
 
         <nav class="navbar navbar-fixed-top navbar-inverse js-ver fadeIn navbar-hide" role="navigation">
             <div class="container-fluid">
@@ -63,12 +67,12 @@
                     </button>
                     <a class="navbar-brand" href="#anchor-home"><span class="fa fa-home pull-left" style="padding-right:10px;margin-top:-3px;font-size:1.5rem;"></span>CK</a>
                 </div>
-                
+
                 <div class="collapse navbar-collapse" id="navbar-responsive-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#anchor-home">Home</a></li>
                         <li><a href="#anchor-portfolio">Portfolio</a></li>
-                        <li><a href="#anchor-contact">Contact</a></li>                  
+                        <li><a href="#anchor-contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -86,7 +90,7 @@
         <div class="container-fluid">
             <div class="col-sm-8 col-sm-offset-2">
                 <div id="owl-demo" class="owl-carousel owl-theme">
-                    
+
                     <div class="item">
                         <img srcset="images/slide1-1900.jpg 1170w, images/slide1-1024.jpg 970w, images/slide1-640.jpg 750w"
                              sizes="100vw"
@@ -131,7 +135,7 @@
                 <hr>
                     <h2>Website Portfolio</h2>
                     <p>I have built various websites over the years. Some are no longer active, so below are a few screenshots of some of the work I've done including a little background information on each.</p>
-                    
+
                     <p>I'm really glad that I went through the excersise of creating this section. I thought that some of these sites had been lost for ever! After a thorough search of my archives, I was pleased to find them burried in an old obscure web folder.</p>
 
                     <p>Where possible I shall put them online so the whole sites can be viewed in all their 90's glory.</p>
@@ -147,7 +151,7 @@
             <div class="col-sm-8 col-sm-offset-2">
 
                 <div id="owl-portfolio" class="owl-carousel">
-                    
+
                     <!-- Current Sites -->
                     <div class="item">
                         <div class="banner hidden-xs"><span class="projects">Current Site</span></div>
@@ -156,7 +160,7 @@
                         </div>
                         <article>
                             <h4><a href="http://keav.net" title="keav.net">http://keav.net</a></h4>
-                            <p>A personal website. Always very clean and simple, I generally use this site to experiment a bit. There is currently an Octopress and a Wordpress blog hosted here.</p>
+                            <p>A personal website. Always very clean and simple, I generally use this site to experiment a bit. I currently have an Octopress and a Wordpress blog hosted here.</p>
                         </article>
                     </div>
 
@@ -213,7 +217,7 @@
                         <img class="lazyOwl" data-src="images/website_screengrab_isc_1024.jpg">
                         </div>
                         <article>
-                             <h4>View <a href="http://keav.net/portfolio/isc/" title="imperialspacecorporation.com">www.imperialspacecorporation.com</a> archived site.</h4>
+                             <h4>View <a href="http://keav.net/portfolio/isc/" rel="nofollow" title="imperialspacecorporation.com">www.imperialspacecorporation.com</a> archived site.</h4>
                             <p>2006 - Internet Spaceships are a serious business. During my time as a founding member of a corporation in the MMORPG <a href="http://www.eve-online.com" title="Eve Online">Eve Online</a>, I created this site as an information and communications resource for our members. We had an active phpBB forum (sadly I've mislaid the database backup) and our own killboard. We took it quite seriously and it was run with strict military discipline.</p>
                         </article>
                     </div>
@@ -224,7 +228,7 @@
                         <img class="lazyOwl" data-src="images/website_screengrab_halflife_1024.jpg">
                         </div>
                         <article>
-                            <h4>View <a href="http://keav.net/portfolio/halflife/" title="Half-Life">Half-Life</a> archived site.</h4>
+                            <h4>View <a href="http://keav.net/portfolio/halflife/" rel="nofollow" title="Half-Life">Half-Life</a> archived site.</h4>
                             <p>If you were gaming in the early 2000's, you definitely played Half-Life. I created this site as a news resource for friends and anyone else who might have been interested in fan created content, videos and game mods.</p>
                         </article>
                     </div>
@@ -235,7 +239,7 @@
                         <img class="lazyOwl" data-src="images/website_screengrab_studentweb_1024.jpg">
                         </div>
                         <article>
-                            <h4>View <a href="http://keav.net/portfolio/studentweb/" title="studnet-web.net">www.student-web.net</a> archived site.</h4>
+                            <h4>View <a href="http://keav.net/portfolio/studentweb/" rel="nofollow" title="studnet-web.net">www.student-web.net</a> archived site.</h4>
                             <p>From way back in 2000. I created this site whilst at university. The idea behind the venture was to become the number one portal for UK university students!</p>
                         </article>
                     </div>
@@ -385,7 +389,7 @@
                                         </a>
                                     </ul>
                                 </li>
-                           
+
                                 <li>
                                     <ul>
                                         <a href="https://github.com/Keav" title="GitHub">
@@ -406,9 +410,18 @@
 
                                 <li>
                                     <ul>
-                                        <a href="skype:ckeavey?chat" title="Skype">
+                                        <a href="skype:ckeavey?chat" rel="nofollow" title="Skype">
                                             <li><span class="fa fw fa-skype"></span></li>
                                             <li><span class="fa fw fa-skype skype"></span></li>
+                                        </a>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <ul>
+                                        <a href="http://keav.net/octopress" rel="follow" title="Blog">
+                                            <li><span class="fa fw fa-bold"></span></li>
+                                            <li><span class="fa fw fa-bold blog"></span></li>
                                         </a>
                                     </ul>
                                 </li>
@@ -441,7 +454,7 @@
                                 <span class="fa fa-fw fa-mobile"></span><br class="visible-xs"><abbr class="hidden-xs" title="Phone">Mobile:</abbr> 07595 306 555
                             </address>
                         </div>
-                    
+
                         <div class="col-sm-6 col-md-6 col-lg-6" style="padding:0;">
                             <hr class="visible-xs">
 
@@ -450,7 +463,7 @@
                                     <!-- a transparent image is preferable -->
                                     <!-- <img class="ratio" src="images/4x3.png" alt=""> -->
                                     <img class="ratio" src="images/4x3_map.jpg" alt="">
-                                    <noscript><img class="ratio" src="images/4x3_map.jpg" alt=""></noscript>
+                                    <!-- <noscript><img class="ratio" src="images/4x3_map.jpg" alt=""></noscript> -->
                                     <!--<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d19889.34630668449!2d-2.5907523152696137!3d51.45506656019337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1405682035002">
                                     </iframe>-->
                                 </div>
@@ -467,7 +480,7 @@
 
         <!-- The order of loading .js scripts matters. jquery.js must be before bootstrap.js -->
         <script src="js/jquery-2.1.1.min.js"></script>
-        <script src="js/bootstrap.js"></script>     
+        <script src="js/bootstrap.js"></script>
 
         <script src="js/jquery.easing.1.3.js"></script>
         <script src="js/waypoints.js"></script>
@@ -478,11 +491,9 @@
  -->
         <script src="js/custom.js"></script>
 
-<!--         <script src="js/google_analytics.js"></script> -->
-
         <!-- <script type="text/javascript">
         $(document).ready(
-            function() { 
+            function() {
                 $("html").niceScroll({
                     scrollspeed: 60,
                     mousescrollstep: 40,
