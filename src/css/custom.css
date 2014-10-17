@@ -49,7 +49,7 @@ body {
 /*div[class^='col-'], div[class*=' col-'] {padding:0;margin:0 auto;}*/
 
 .navbar .container-fluid {background-color:transparent;}
- 
+
 a:focus {outline:0;}
 
 /*.navbar-collapse {overflow:hidden;}*/
@@ -85,7 +85,7 @@ a:focus {outline:0;}
   font-size:3rem;
   line-height:100px;
   opacity:0;
-  
+
   /*-webkit-transform-origin:100% 100%;
       -ms-transform-origin:100% 100%;
           transform-origin:100% 100%;*/
@@ -423,6 +423,7 @@ address .fa {
 .twitter{color:#00aced;}
 .facebook{color:#3b5998;}
 .skype{color:#12a5f4;}
+.blog{color:#efa400;}
 
 
 .wrapper         {width:100%;max-width:400px;height:100%;max-height:300px;margin:0 auto;background-color:#222;}
@@ -465,7 +466,7 @@ footer p {margin:0;padding-right:1rem;}
 //                      //
 // Media Query Section  //
 //                      //
-========================== 
+==========================
 */
 
 @media (max-width:767px) {
@@ -497,7 +498,7 @@ footer p {margin:0;padding-right:1rem;}
     top:10px;
   }
 
-  .reel {width:180px;margin:0 auto;}
+  .reel {width:225px;margin:0 auto;}
 
   address .fa {
     margin:0;
