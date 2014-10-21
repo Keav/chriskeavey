@@ -55,27 +55,8 @@ var waitForFinalEvent = (function () {
     };
 }());
 
-
-$(document).ready(function () {
-    var i = 0, imgHeight = $("#getHeight").height(), myElements = document.querySelectorAll(".owl-prev, .owl-next");
-
-    for (i = 0; i < myElements.length; i++) {
-        myElements[i].style.top = imgHeight / 2 - 32 + "px";
-    }
-
-    $(window).resize(function () {
-        waitForFinalEvent(function () {
-            imgHeight = $("#getHeight").height();
-            for (i = 0; i < myElements.length; i++) {
-                myElements[i].style.top = imgHeight / 2 - 32 + "px";
-            }
-        }, 200, "un");
-    });
-});
-$(window).trigger('resize');
-
-
-$(document).ready(function () {
+$('.item img').load(function () {
+// $(document).ready(function () {
     var i = 0, imgHeight = $("#getHeight").height(), myElements = document.querySelectorAll("#setHeight");
 
     for (i = 0; i < myElements.length; i++) {
@@ -93,6 +74,24 @@ $(document).ready(function () {
 });
 $(window).trigger('resize');
 
+$('.item img').load(function () {
+// $(document).ready(function () {
+    var i = 0, imgHeight = $("#getHeight").height(), myElements = document.querySelectorAll(".owl-prev, .owl-next");
+
+    for (i = 0; i < myElements.length; i++) {
+        myElements[i].style.top = imgHeight / 2 - 32 + "px";
+    }
+
+    $(window).resize(function () {
+        waitForFinalEvent(function () {
+            imgHeight = $("#getHeight").height();
+            for (i = 0; i < myElements.length; i++) {
+                myElements[i].style.top = imgHeight / 2 - 32 + "px";
+            }
+        }, 200, "un");
+    });
+});
+$(window).trigger('resize');
 
 // Collapse Bootstrap navbar when anywhere on page is clicked
 /*jslint unparam:true */
