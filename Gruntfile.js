@@ -151,7 +151,7 @@ module.exports = function (grunt) {
 
         cssmin: {
             options: {
-                keepSpecialComments: 0
+                keepSpecialComments: 1
             },
             build: {
                 files: [{
@@ -194,6 +194,9 @@ module.exports = function (grunt) {
         },
 
         uglify: {
+            options: {
+                preserveComments: 'some'
+            },
             build: {
                 files: [{
                     expand: true,
