@@ -150,6 +150,9 @@ module.exports = function (grunt) {
         },
 
         cssmin: {
+            options: {
+                keepSpecialComments: 0
+            },
             build: {
                 files: [{
                     expand: true,
@@ -334,7 +337,7 @@ module.exports = function (grunt) {
     grunt.registerTask('code', ['clean', 'newer:htmlmin', 'newer:uglify', 'newer:cssmin', 'hashres', 'newer:copy', 'string-replace']);
 
     // Interim Deployment
-    grunt.registerTask('deploy', ['clean', 'newer:imagemin', 'newer:htmlmin', 'newer:uglify', 'newer:cssmin', 'hashres', 'newer:copy', 'string-replace']);
+    grunt.registerTask('deploy', ['clean', 'newer:imagemin', 'htmlmin', 'uglify', 'cssmin', 'hashres', 'newer:copy', 'string-replace']);
 
     grunt.registerTask('copysrc', ['clean', 'copy']);
 
