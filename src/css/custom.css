@@ -402,14 +402,16 @@ address .fa {
 }
 
 .reel ul li {
+  display: inline-block;
   color:#fff;
   width:45px;
-    -webkit-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
           transition: all 0.2s ease-in-out;
 }
 
 .reel > ul > li:hover{
   -webkit-transform:translate(0,-40px);
+      -ms-transform:translate(0,-40px);
           transform:translate(0,-40px);
 }
 
