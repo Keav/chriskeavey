@@ -55,8 +55,9 @@ var waitForFinalEvent = (function () {
     };
 }());
 
-$('.item img').load(function () {
-// $(document).ready(function () {
+
+$('.item img').imagesLoaded(function () {
+//$('.item img').load(function () {
     var i = 0, imgHeight = $("#getHeight").height(), myElements = document.querySelectorAll("#setHeight");
 
     for (i = 0; i < myElements.length; i++) {
@@ -69,15 +70,14 @@ $('.item img').load(function () {
             for (i = 0; i < myElements.length; i++) {
                 myElements[i].style.height = imgHeight + "px";
             }
-        }, 200, "uni");
+        }, 200, "");
     });
 });
 $(window).trigger('resize');
 
-$('.item img').load(function () {
-// $(document).ready(function () {
+$('.item img').imagesLoaded(function () {
+//$('.item img').load(function () {
     var i = 0, imgHeight = $("#getHeight").height(), myElements = document.querySelectorAll(".owl-prev, .owl-next");
-
     for (i = 0; i < myElements.length; i++) {
         myElements[i].style.top = imgHeight / 2 - 32 + "px";
     }
@@ -88,10 +88,11 @@ $('.item img').load(function () {
             for (i = 0; i < myElements.length; i++) {
                 myElements[i].style.top = imgHeight / 2 - 32 + "px";
             }
-        }, 200, "un");
+        }, 200, "");
     });
 });
 $(window).trigger('resize');
+
 
 // Collapse Bootstrap navbar when anywhere on page is clicked
 /*jslint unparam:true */
