@@ -1,5 +1,5 @@
 {
-  "name": "chriskeavey.com",
+  "name": "chriskeavey",
   "version": "0.1.0",
   "description": "My own proffessional website",
   "private": true,
@@ -12,7 +12,7 @@
   "main": "Gruntfile.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Keav/chriskeavey.com.git"
+    "url": "https://github.com/Keav/chriskeavey.git"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
