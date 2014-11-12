@@ -9,8 +9,7 @@ html, body {
   margin:0;
   padding:0;
   color:#555;
-  background-color:transparent;
-  background-image:url(../images/diamond_upholstery.png); /* **** Causing whole screen repaint!!! */
+  /*background-color:transparent;*/
   }
 
 html {
@@ -18,10 +17,15 @@ html {
   }
 
 body {
-  font-size:16px;
-/*  font-size:1rem;*/
+/*  font-size:16px;*/
+  font-size:1rem;
   line-height:1.4;
+  background-image:url(../images/diamond_upholstery.png);
   }
+
+.no-touch html, .no-touch body, .no-touch .divider-image-cover, .no-touch .splash-background {
+  background-attachment: fixed;
+}
 
 @media (max-width: 767px) {
     body {font-size: 10px;
