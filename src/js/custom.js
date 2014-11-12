@@ -4,17 +4,6 @@
 
 "use strict";
 
-
-$(document).ready(function () {
-    // Uses Modernizr.js to detect touch enabled devices. This method is an indelicate solution but the best I've found so far. Agent sniffing or actual property testing resulted in inconsisstent results.
-    //It then disables the CSS 'background-attachment:fixed;' property. This because fixed backgrounds don't play nicely on iOS devices when scrolling. iOS freezes all animations/transitons until the scroll is finished rather than animating them as the page scrolls.
-    if ($("html").hasClass("no-touch")) {
-        $('.splash-background, .divider-image-cover, html, body').addClass('fix-background');
-    } else {
-        $('.splash-background, .divider-image-cover, html, body').removeClass('fix-background');
-    }
-});
-
 $(document).ready(function () {
     $('#js-anim').hover(function () {
         $(this).removeClass('bounce');
