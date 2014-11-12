@@ -104,15 +104,15 @@ $(document).ready(function () {
 // Disable and Enable scrolling functions.
 // left: 37, up: 38, right: 39, down: 40,
 // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-var keys = [37, 38, 39, 40];
+// var keys = [37, 38, 39, 40];
 
-function preventDefault(e) {
-    e = e || window.event;
-    if (e.preventDefault) {
-        e.preventDefault();
-        e.returnValue = false;
-    }
-}
+// function preventDefault(e) {
+//     e = e || window.event;
+//     if (e.preventDefault) {
+//         e.preventDefault();
+//         e.returnValue = false;
+//     }
+// }
 
 // function keydown(e) {
 //     var i = 0;
@@ -124,25 +124,25 @@ function preventDefault(e) {
 //     }
 // }
 
-function wheel(e) {
-    preventDefault(e);
-}
+// function wheel(e) {
+//     preventDefault(e);
+// }
 
-function disable_scroll() {
-    var keydown = 0;
-    if (window.addEventListener) {
-        window.addEventListener('DOMMouseScroll', wheel, false);
-    }
-    window.onmousewheel = document.onmousewheel = wheel;
-    document.onkeydown = keydown;
-}
+// function disable_scroll() {
+//     var keydown = 0;
+//     if (window.addEventListener) {
+//         window.addEventListener('DOMMouseScroll', wheel, false);
+//     }
+//     window.onmousewheel = document.onmousewheel = wheel;
+//     document.onkeydown = keydown;
+// }
 
-function enable_scroll() {
-    if (window.removeEventListener) {
-        window.removeEventListener('DOMMouseScroll', wheel, false);
-    }
-    window.onmousewheel = document.onmousewheel = document.onkeydown = null;
-}
+// function enable_scroll() {
+//     if (window.removeEventListener) {
+//         window.removeEventListener('DOMMouseScroll', wheel, false);
+//     }
+//     window.onmousewheel = document.onmousewheel = document.onkeydown = null;
+// }
 
 
 $(document).ready(function () {
@@ -176,31 +176,31 @@ $(document).ready(function () {
     });
 });
 
-$(document).ready(function () {
-//Uses waypoints.js to trigger an action. In this case disabling mouse scrolling using disable_scroll(); function and scrollTop to #ID.
-//Is triggered by hrefs whether mouse is scrolled or not!!! i.e. is triggered by SCREEN movement.
-    var x = 0, tEnd = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd';
-    $('#js-scroll-trigger').waypoint(function (direction) {
-        if (!$('html, body').is(':animated') && (direction === 'down') && x === 0) {
-            disable_scroll();
-            x = 1;
+// $(document).ready(function () {
+// //Uses waypoints.js to trigger an action. In this case disabling mouse scrolling using disable_scroll(); function and scrollTop to #ID.
+// //Is triggered by hrefs whether mouse is scrolled or not!!! i.e. is triggered by SCREEN movement.
+//     var x = 0, tEnd = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd';
+//     $('#js-scroll-trigger').waypoint(function (direction) {
+//         if (!$('html, body').is(':animated') && (direction === 'down') && x === 0) {
+//             disable_scroll();
+//             x = 1;
 
-            $('html, body').stop().animate({
-                scrollTop: $('#anchor-portfolio').offset().top
-            }, 1000, 'easeOutQuad');
-        }
+//             $('html, body').stop().animate({
+//                 scrollTop: $('#anchor-portfolio').offset().top
+//             }, 1000, 'easeOutQuad');
+//         }
 
-        if (x === 1) {
-            // Using 'body' instead of '.navbar' fires for all occuring transitions i.e. fires multiple times.
-            // Perhaps detect position of page rather than transitions?
-            $('.navbar').on(tEnd, function () {
-                enable_scroll();
-                x = 2;
-                $('.navbar').off(tEnd);
-            });
-        }
-    }, {offset: '100%'});
-});
+//         if (x === 1) {
+//             // Using 'body' instead of '.navbar' fires for all occuring transitions i.e. fires multiple times.
+//             // Perhaps detect position of page rather than transitions?
+//             $('.navbar').on(tEnd, function () {
+//                 enable_scroll();
+//                 x = 2;
+//                 $('.navbar').off(tEnd);
+//             });
+//         }
+//     }, {offset: '100%'});
+// });
 
 
 $(document).ready(function () {
