@@ -23,7 +23,7 @@ body {
   background-image:url(../images/diamond_upholstery.png);
   }
 
-.no-touch html, .no-touch body, .no-touch .divider-image-cover, .no-touch .splash-background {
+.no-touch html, .no-touch body, .no-touch .divider-image-cover, .no-touch .landing {
   background-attachment: fixed;
 }
 
@@ -67,11 +67,37 @@ a:focus {outline:0;}
           animation:none;
   }
 
+.js .navbar-hide {
+  margin-top:-999px;
+  /*transform: translateY(-100px);*/
+  /*opacity:0;*/
+  }
+
 .landing {
   width:100%;
   height:100%;
-  background-color:#000;
+  background: transparent;
+  background-size: cover;
+  background-position: center center;
   }
+
+@media (max-width: 767px) {
+  .landing {
+    background-image:url('../images/bggs_768.jpg');
+    }
+}
+
+@media (min-width:768px) {
+  .landing {
+    background-image:url('../images/bggs_1024.jpg');
+    }
+}
+
+@media (min-width:1200px) {
+  .landing {
+    background-image:url('../images/bggs_1800.jpg');
+    }
+}
 
 .splash {
   position:absolute;
@@ -88,11 +114,6 @@ a:focus {outline:0;}
   font-family:'Open Sans Condensed', sans-serif;
   font-size:3rem;
   line-height:100px;
-  /*opacity:0;*/
-
-  /*-webkit-transform-origin:100% 100%;
-      -ms-transform-origin:100% 100%;
-          transform-origin:100% 100%;*/
   }
 
 .splash-background {
@@ -106,26 +127,9 @@ a:focus {outline:0;}
   background-repeat:no-repeat;
   background-position:center center;
   background-size:cover;
+  background: transparent;
   /*opacity:0;*/
   }
-
-@media (max-width: 767px) {
-  .splash-background {
-    background-image:url('../images/bggs_768.jpg');
-    }
-}
-
-@media (min-width:768px) {
-  .splash-background {
-    background-image:url('../images/bggs_1024.jpg');
-    }
-}
-
-@media (min-width:1200px) {
-  .splash-background {
-    background-image:url('../images/bggs_1800.jpg');
-    }
-}
 
 .splash-logo {
   position:absolute;
@@ -139,10 +143,6 @@ a:focus {outline:0;}
 .splash-logo img {
   width:360px;
   height:360px;
-  }
-
-.fix-background {
-  background-attachment:fixed;
   }
 
 .pagedown {
@@ -178,6 +178,7 @@ a:focus {outline:0;}
   right:0;
   border:0;
   z-index:9999;
+  -webkit-transform: translateZ(0);
   }
 
   .banner {
@@ -452,17 +453,16 @@ footer p {margin:0;padding-right:1rem;}
   -webkit-transition:opacity 1s ease-in-out;
           transition:opacity 1s ease-in-out;
   opacity:1;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
   }
 
 .fade-out {
   -webkit-transition:opacity 1s ease-in-out;
           transition:opacity 1s ease-in-out;
   opacity:0;
-  }
-
-.js .navbar-hide {
-  margin-top:-999px;
-  opacity:0;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
   }
 
 .hide {opacity:0;}
