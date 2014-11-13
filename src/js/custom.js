@@ -6,9 +6,7 @@
 
 $(document).ready(function () {
     $('#js-anim').hover(function () {
-        $(this).removeClass('bounce');
-    }, function () {
-        $(this).addClass('bounce');
+        $(this).toggleClass('bounce');
     });
 });
 
@@ -30,7 +28,6 @@ $(document).ready(function () {
     });
 });
 
-
 var waitForFinalEvent = (function () {
     var timers = {};
     return function (callback, ms, uniqueId) {
@@ -44,10 +41,9 @@ var waitForFinalEvent = (function () {
     };
 }());
 
-
 $('.item img').imagesLoaded(function () {
 //$('.item img').load(function () {
-    var i = 0, imgHeight = $("#getHeight").height(), myElements = document.querySelectorAll("#setHeight");
+    var i = 0, imgHeight = $("#getHeight").height(), myElements = document.querySelectorAll(".setHeight");
 
     for (i = 0; i < myElements.length; i++) {
         myElements[i].style.height = imgHeight + "px";
@@ -147,30 +143,17 @@ $(document).ready(function () {
 
 $(document).ready(function () {
 // Navbar fading
-//Uses waypoints.js to trigger an action. In this case enabling mouse scrolling using enable_scroll(); function and adding/removing CSS classes.
-    var z = 0;
+//Uses waypoints.js to trigger an action.
     $('#js-scroll-trigger').waypoint(function (direction) {
-        var el = '.navbar', tEnd = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd';
-        if (direction === 'down') {
+        var el = '.navbar', tEnd = 'fadeOut.transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd';
 
-            $(el).removeClass('fade-out navbar-hide');
-            $(el).addClass('fade-in');
-            z = 0;
+        $(el).removeClass('fadeIn navbar-hide');
+        $(el).toggleClass('fade-in', direction === 'down');
+        $(el).toggleClass('fade-out', direction === 'up');
 
-        } else {
-
-            $(el).removeClass('fade-in');
-            $(el).addClass('fade-out');
-            z = 1;
-
-            $(el).on(tEnd, function () {
-                if (z === 1) {
-                    $(el).addClass('navbar-hide');
-                    z = 0;
-                    $(el).off(tEnd);
-                }
-            });
-        }
+        $(el).on(tEnd, function () {
+            $(el).toggleClass('navbar-hide', direction === 'up');
+        });
     }, {
         offset: '0%'
     });
@@ -203,35 +186,67 @@ $(document).ready(function () {
 // });
 
 
-$(document).ready(function () {
-    //Easing href link functions using jquery.easing.1.3.js
-    //Vertical easing ".js-ver"
-    $(function () {
-        $('.js-ver a').bind('click', function (event) {
-            var $anchor = $(this);
+// $(document).ready(function () {
+//     //Easing href link functions using jquery.easing.1.3.js
+//     //Vertical easing ".js-ver"
+//     $(function () {
+//         $('.js-ver a').bind('click', function (event) {
+//             var $anchor = $(this);
 
-            $('html, body').stop().animate({
-                scrollTop: $($anchor.attr('href')).offset().top
-            }, 1500, 'easeInOutExpo');
+//             $('html, body').stop().animate({
+//                 scrollTop: $($anchor.attr('href')).offset().top
+//             }, 1500, 'easeInOutExpo');
 
-            event.preventDefault();
-        });
-    });
-});
+//             event.preventDefault();
+//         });
+//     });
+// });
 
-$(document).ready(function () {
-    //Horizontal easing ".js-hor"
-    $(function () {
-        $('.js-hor a').bind('click', function (event) {
-            var $anchor = $(this);
+// $(document).ready(function () {
+//     //Horizontal easing ".js-hor"
+//     $(function () {
+//         $('.js-hor a').bind('click', function (event) {
+//             var $anchor = $(this);
 
-            $('html, body').stop().animate({
-                scrollLeft: $($anchor.attr('href')).offset().left
-            }, 1500, 'easeInOutExpo');
+//             $('html, body').stop().animate({
+//                 scrollLeft: $($anchor.attr('href')).offset().left
+//             }, 1500, 'easeInOutExpo');
 
-            event.preventDefault();
-        });
-    });
+//             event.preventDefault();
+//         });
+//     });
+// });
+//
+//  $(document).ready(function () {
+//   $('a[href*=#]:not([href=#])').click(function() {
+//   //$('a.page-scroll[href*=#]:not([href=#])').click(function () {
+//     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+//       var target = $(this.hash);
+//       target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+//       if (target.length) {
+//         $('html,body').animate({
+//           scrollTop: target.offset().top
+//         }, 1000);
+//         return false;
+//       }
+//     }
+//   });
+// });
+
+$('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+        || location.hostname == this.hostname) {
+
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+           if (target.length) {
+             $('html,body').animate({
+                 scrollTop: target.offset().top
+            }, 1000, 'easeInOutExpo');
+            return false;
+        }
+    }
 });
 
 // Ensure page refreshes always start back at the top of the page
