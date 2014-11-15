@@ -24,9 +24,9 @@ html {
 
 body {
 /*  font-size:16px;*/
-  font-size:1rem;
-  line-height:1.4;
-  background-image:url(../images/diamond_upholstery.png);
+  font-size: 1rem;
+  line-height: 1.4;
+  background-image: url(../images/diamond_upholstery.png);
   }
 
 .no-touch html, .no-touch body, .no-touch .divider-image-cover, .no-touch .landing {
