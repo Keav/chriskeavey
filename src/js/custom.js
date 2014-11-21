@@ -101,13 +101,13 @@ $(document).ready(function () {
     // $('#js-scroll-trigger').waypoint(function (direction) {
     //     var el = '.navbar', tEnd = 'fadeOut.transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd';
 
-    //     $(el).removeClass('fadeIn navbar-hide');
+    //     // $(el).removeClass('fadeIn navbar-hide');
     //     $(el).toggleClass('fade-in', direction === 'down');
     //     $(el).toggleClass('fade-out', direction === 'up');
 
-    //     $(el).on(tEnd, function () {
-    //         $(el).toggleClass('navbar-hide', direction === 'up');
-    //     });
+        // $(el).on(tEnd, function () {
+        //     $(el).toggleClass('navbar-hide', direction === 'up');
+        // });
     // }, {
     //     offset: '0%'
     // });
@@ -118,9 +118,9 @@ $(document).ready(function () {
         var el = '.navbar';
 
         if (direction === 'down') {
-            $(el).fadeIn(1000);
+            $(el).fadeIn(1000, 'swing');
         } else {
-            $(el).fadeOut(1000);
+            $(el).fadeOut(1000, 'swing');
         }
     }, {
         offset: '0%'
