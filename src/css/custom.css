@@ -59,8 +59,8 @@ a:focus {outline:0;}
   }
 
 .js .navbar {
-  -webkit-animation:none;
-          animation:none;
+/*  -webkit-animation:none;
+          animation:none;*/
   display: none;
   }
 
@@ -455,8 +455,6 @@ footer p {margin:0;padding-right:1rem;}
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
   }
-
-.hide {opacity:0;}
 
 /*
 ==========================
