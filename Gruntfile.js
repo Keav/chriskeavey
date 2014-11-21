@@ -300,6 +300,23 @@ module.exports = function (grunt) {
             }
         },
 
+        bump: {
+            options: {
+                files: ['package.json'],
+                updateConfigs: [],
+                commit: true,
+                commitMessage: 'Release v%VERSION%',
+                commitFiles: ['package.json'],
+                createTag: true,
+                tagName: 'v%VERSION%',
+                tagMessage: 'Version %VERSION%',
+                push: true,
+                pushTo: 'upstream',
+                gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
+                globalReplace: false
+            }
+        },
+
         connect: {
             server: {
                 options: {
@@ -335,7 +352,7 @@ module.exports = function (grunt) {
     grunt.registerTask('buildcss', ['sass', 'cssmin']);
 
     // Bump release version numbers
-    grunt.registerTask('release', ['shell:bumpVersion']);
+    grunt.registerTask('release', ['bump:major']);
 
     grunt.registerTask('code', ['clean', 'newer:htmlmin', 'newer:uglify', 'newer:cssmin', 'hashres', 'newer:copy', 'string-replace']);
 
