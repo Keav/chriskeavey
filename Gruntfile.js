@@ -150,6 +150,9 @@ module.exports = function (grunt) {
         },
 
         cssmin: {
+            options: {
+                keepSpecialComments: 1
+            },
             build: {
                 files: [{
                     expand: true,
@@ -191,6 +194,9 @@ module.exports = function (grunt) {
         },
 
         uglify: {
+            options: {
+                preserveComments: 'some'
+            },
             build: {
                 files: [{
                     expand: true,
@@ -294,6 +300,23 @@ module.exports = function (grunt) {
             }
         },
 
+        bump: {
+            options: {
+                files: ['package.json'],
+                updateConfigs: [],
+                commit: true,
+                commitMessage: 'Release v%VERSION%',
+                commitFiles: ['package.json'],
+                createTag: true,
+                tagName: 'v%VERSION%',
+                tagMessage: 'Version %VERSION%',
+                push: true,
+                pushTo: 'upstream',
+                gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
+                globalReplace: false
+            }
+        },
+
         connect: {
             server: {
                 options: {
@@ -329,12 +352,12 @@ module.exports = function (grunt) {
     grunt.registerTask('buildcss', ['sass', 'cssmin']);
 
     // Bump release version numbers
-    grunt.registerTask('release', ['shell:bumpVersion']);
+    grunt.registerTask('release', ['bump:major']);
 
     grunt.registerTask('code', ['clean', 'newer:htmlmin', 'newer:uglify', 'newer:cssmin', 'hashres', 'newer:copy', 'string-replace']);
 
     // Interim Deployment
-    grunt.registerTask('deploy', ['clean', 'newer:imagemin', 'newer:htmlmin', 'newer:uglify', 'newer:cssmin', 'hashres', 'newer:copy', 'string-replace']);
+    grunt.registerTask('deploy', ['clean', 'newer:imagemin', 'htmlmin', 'uglify', 'cssmin', 'hashres', 'newer:copy', 'string-replace']);
 
     grunt.registerTask('copysrc', ['clean', 'copy']);
 

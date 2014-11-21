@@ -1,6 +1,6 @@
 {
-  "name": "chriskeavey.com",
-  "version": "0.1.0",
+  "name": "chriskeavey",
+  "version": "1.0.0",
   "description": "My own proffessional website",
   "private": true,
   "homepage": "http://chriskeavey.com",
@@ -12,11 +12,12 @@
   "main": "Gruntfile.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Keav/chriskeavey.com.git"
+    "url": "https://github.com/Keav/chriskeavey.git"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-autoprefixer": "^1.0.1",
+    "grunt-bump": "^0.0.16",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-compass": "^1.0.1",
     "grunt-contrib-connect": "^0.8.0",

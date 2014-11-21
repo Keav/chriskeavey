@@ -4,34 +4,48 @@
 /*html, body {height:100%;min-height:100%;}*/
 
 html, body {
-  width:100%;
+  width: 100%;
   height:100%;
-  margin:0;
-  padding:0;
-  color:#555;
-  background-color:transparent;
-  background-image:url(../images/diamond_upholstery.png); /* **** Causing whole screen repaint!!! */
+  margin: 0;
+  padding: 0;
+  color: #555;
   }
 
 html {
-  font-size:100%;
+  font-size: 100%;
   }
+
+/*0.75      12px
+0.875     14px
+1         16px
+1.125     18px
+1.25      20px
+1.5       24px*/
 
 body {
-  font-size:16px;
-/*  font-size:1rem;*/
-  line-height:1.4;
+/*  font-size:16px;*/
+  font-size: 1rem;
+  line-height: 1.4;
+  background-image: url(../images/diamond_upholstery.png);
   }
 
-@media (max-width: 767px) {
-    body {font-size: 10px;
-  line-height:1.4;}
+.no-touch html, .no-touch body, .no-touch .divider-image-cover, .no-touch .landing {
+  background-attachment: fixed;
+}
+
+/*@media (max-width: 767px) {
+  body {
+    font-size: 10px;
+    line-height:1.4;
+  }
 }
 
 @media (max-width: 992px) {
-    body {font-size: 14px;
-  line-height:1.4;}
-}
+  body {
+    font-size: 14px;
+    line-height:1.4;
+  }
+}*/
 
 .anchor{
   display: block;
@@ -63,11 +77,37 @@ a:focus {outline:0;}
           animation:none;
   }
 
+.js .navbar-hide {
+  margin-top:-999px;
+  /*transform: translateY(-100px);*/
+  /*opacity:0;*/
+  }
+
 .landing {
   width:100%;
   height:100%;
-  background-color:#000;
+  background: transparent;
+  background-size: cover;
+  background-position: center center;
   }
+
+@media (max-width: 767px) {
+  .landing {
+    background-image:url('../images/bggs_768.jpg');
+    }
+}
+
+@media (min-width:768px) {
+  .landing {
+    background-image:url('../images/bggs_1024.jpg');
+    }
+}
+
+@media (min-width:1200px) {
+  .landing {
+    background-image:url('../images/bggs_1800.jpg');
+    }
+}
 
 .splash {
   position:absolute;
@@ -84,11 +124,6 @@ a:focus {outline:0;}
   font-family:'Open Sans Condensed', sans-serif;
   font-size:3rem;
   line-height:100px;
-  opacity:0;
-
-  /*-webkit-transform-origin:100% 100%;
-      -ms-transform-origin:100% 100%;
-          transform-origin:100% 100%;*/
   }
 
 .splash-background {
@@ -102,26 +137,9 @@ a:focus {outline:0;}
   background-repeat:no-repeat;
   background-position:center center;
   background-size:cover;
-  opacity:0;
+  background: transparent;
+  /*opacity:0;*/
   }
-
-@media (max-width: 767px) {
-  .splash-background {
-    background-image:url('../images/bggs_768.jpg');
-    }
-}
-
-@media (min-width:768px) {
-  .splash-background {
-    background-image:url('../images/bggs_1024.jpg');
-    }
-}
-
-@media (min-width:1200px) {
-  .splash-background {
-    background-image:url('../images/bggs_1800.jpg');
-    }
-}
 
 .splash-logo {
   position:absolute;
@@ -137,10 +155,6 @@ a:focus {outline:0;}
   height:360px;
   }
 
-.fix-background {
-  background-attachment:fixed;
-  }
-
 .pagedown {
   position:absolute;
   /*z-index:2;*/
@@ -151,7 +165,7 @@ a:focus {outline:0;}
   padding:0;
   text-align:center;
   font-size:1.875rem;
-  opacity:0;
+  /*opacity:0;*/
   }
 
 .landing a:link, .landing a:visited, .landing a:active {color:#fff;}
@@ -174,6 +188,7 @@ a:focus {outline:0;}
   right:0;
   border:0;
   z-index:9999;
+  -webkit-transform: translateZ(0);
   }
 
   .banner {
@@ -402,14 +417,16 @@ address .fa {
 }
 
 .reel ul li {
+  display: inline-block;
   color:#fff;
   width:45px;
-    -webkit-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
           transition: all 0.2s ease-in-out;
 }
 
 .reel > ul > li:hover{
   -webkit-transform:translate(0,-40px);
+      -ms-transform:translate(0,-40px);
           transform:translate(0,-40px);
 }
 
@@ -446,17 +463,16 @@ footer p {margin:0;padding-right:1rem;}
   -webkit-transition:opacity 1s ease-in-out;
           transition:opacity 1s ease-in-out;
   opacity:1;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
   }
 
 .fade-out {
   -webkit-transition:opacity 1s ease-in-out;
           transition:opacity 1s ease-in-out;
   opacity:0;
-  }
-
-.js .navbar-hide {
-  margin-top:-999px;
-  opacity:0;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
   }
 
 .hide {opacity:0;}
