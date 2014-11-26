@@ -43,40 +43,41 @@ $(document).ready(function () {
     }());
 
     // Wait for image to load then get image height and reposition elements
-    $('.item img').imagesLoaded(function () {
-        var i = 0, imgHeight = $("#getHeight").height(), myElements = document.querySelectorAll(".setHeight");
+    //$('#owl-portfolio img:first').imagesLoaded(function () {
+    $($('#owl-portfolio img')[0]).load(function () {
+
+        var i = 0,
+            c = 0,
+            imgHeight = $('#owl-portfolio img')[0].height,
+            myElements = $('.setHeight'),
+            myElements2 = $(".owl-prev, .owl-next");
 
         for (i = 0; i < myElements.length; i++) {
             myElements[i].style.height = imgHeight + "px";
         }
 
-        $(window).resize(function () {
-            waitForFinalEvent(function () {
-                imgHeight = $("#getHeight").height();
-                for (i = 0; i < myElements.length; i++) {
-                    myElements[i].style.height = imgHeight + "px";
-                }
-            }, 200, "a");
-        });
-    });
-    $(window).trigger('resize');
-
-    // Wait for image to load then get image height and reposition elements
-    $('.item img').imagesLoaded(function () {
-    //$('.item img').load(function () {
-        var i = 0, imgHeight = $("#getHeight").height(), myElements = document.querySelectorAll(".owl-prev, .owl-next");
-        for (i = 0; i < myElements.length; i++) {
-            myElements[i].style.top = imgHeight / 2 - 32 + "px";
+        for (c = 0; c < myElements2.length; c++) {
+            myElements2[c].style.top = imgHeight / 2 - 32 + "px";
         }
+    });
 
-        $(window).resize(function () {
-            waitForFinalEvent(function () {
-                imgHeight = $("#getHeight").height();
-                for (i = 0; i < myElements.length; i++) {
-                    myElements[i].style.top = imgHeight / 2 - 32 + "px";
-                }
-            }, 200, "b");
-        });
+    $(window).resize(function () {
+        waitForFinalEvent(function () {
+
+            var i = 0,
+                c = 0,
+                imgHeight = $('#owl-portfolio img')[0].height,
+                myElements = $('.setHeight'),
+                myElements2 = $(".owl-prev, .owl-next");
+
+            for (i = 0; i < myElements.length; i++) {
+                myElements[i].style.height = imgHeight + "px";
+            }
+
+            for (c = 0; c < myElements2.length; c++) {
+                myElements2[c].style.top = imgHeight / 2 - 32 + "px";
+            }
+        }, 200, "a");
     });
     $(window).trigger('resize');
 
@@ -94,23 +95,6 @@ $(document).ready(function () {
         $('body').addClass('pointer');
     });
     /*jslint unparam:false */
-
-
-    // Navbar fading
-    // Uses waypoints.js to trigger an action.
-    // $('#js-scroll-trigger').waypoint(function (direction) {
-    //     var el = '.navbar', tEnd = 'fadeOut.transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd';
-
-    //     // $(el).removeClass('fadeIn navbar-hide');
-    //     $(el).toggleClass('fade-in', direction === 'down');
-    //     $(el).toggleClass('fade-out', direction === 'up');
-
-        // $(el).on(tEnd, function () {
-        //     $(el).toggleClass('navbar-hide', direction === 'up');
-        // });
-    // }, {
-    //     offset: '0%'
-    // });
 
     // Navbar fading
     // Uses waypoints.js to trigger an action.
@@ -139,9 +123,10 @@ $(document).ready(function () {
                 return false;
             }
         }
+        return false;
     });
 
-    // Ensure page refreshes always start back at the top of the page
+    // Ensure page refreshes/reloads always start back at the top of the page
     $(window).on('beforeunload', function () {
         $(window).scrollTop(0);
     });
