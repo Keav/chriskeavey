@@ -64,6 +64,11 @@ a:focus {outline:0;}
   display: none;
   }
 
+.navbar-brand span {
+  margin-top:-3px;
+  font-size:1.5rem;
+}
+
 .landing {
   width:100%;
   height:100%;
@@ -98,13 +103,7 @@ a:focus {outline:0;}
   width:360px;
   height:100px;
   margin:-50px 0 0 -180px;
-  text-align:center;
-  text-transform:uppercase;
-  color:#fff;
   border:1px solid #fff;
-  font-family:'Open Sans Condensed', sans-serif;
-  font-size:3rem;
-  line-height:100px;
   }
 
 .splash-background {
@@ -134,6 +133,17 @@ a:focus {outline:0;}
 .splash-logo img {
   width:360px;
   height:360px;
+  }
+
+  h1 {
+  margin:0;
+  padding: 0;
+  text-align:center;
+  text-transform:uppercase;
+  color:#fff;
+  font-family:'Open Sans Condensed', sans-serif;
+  font-size:3rem;
+  line-height:100px;
   }
 
 .pagedown {
@@ -294,7 +304,16 @@ a:focus {outline:0;}
 .owl-theme .owl-controls .owl-buttons div {
   margin:0;
   padding:0;
+  backface-visibility: hidden;
 }
+
+.owl-pagination {
+  backface-visibility: hidden;
+}
+
+/*.owl-page {
+  backface-visibility: hidden;
+}*/
 
 .owl-prev, .owl-next {
   position:absolute;
@@ -302,6 +321,7 @@ a:focus {outline:0;}
   font-size:3rem;
 /*  cursor:pointer;*/
   color:#555;
+  /*backface-visibility: hidden;*/
 }
 
 .owl-prev {
