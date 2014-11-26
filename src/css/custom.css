@@ -410,6 +410,7 @@ address .fa {
 .reel {
   overflow:hidden;
   height:40px;
+  width:230px;
 }
 
 .reel ul {
@@ -513,7 +514,7 @@ footer p {margin:0;padding-right:1rem;}
     top:10px;
   }
 
-  .reel {width:225px;margin:0 auto;}
+  .reel {width:230px;margin:0 auto;}
 
   address .fa {
     margin:0;
