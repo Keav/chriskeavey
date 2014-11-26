@@ -2,15 +2,15 @@
 /*global $, jQuery*/
 /*jslint plusplus: true */
 
-"use strict";
-
 $(document).ready(function () {
+    "use strict";
+
+    // Pause bounce animation when href is hovered over
     $('#js-anim').hover(function () {
         $(this).toggleClass('bounce');
     });
-});
 
-$(document).ready(function () {
+    // Init Owl Carousel
     var owl = $("#owl-portfolio");
     owl.owlCarousel({
         autoplay: false,
@@ -24,64 +24,65 @@ $(document).ready(function () {
         ],
         pagination: true,
         lazyLoad: true,
-        responsiveRefreshRate: 200,
+        responsiveRefreshRate: 200
     });
-});
 
-var waitForFinalEvent = (function () {
-    var timers = {};
-    return function (callback, ms, uniqueId) {
-        if (!uniqueId) {
-            uniqueId = "Don't call this twice without a uniqueId";
+    // Reposition owl carousel elements on windows resize
+    // Wait for windows resize to finish before running the subsequent functions
+    var waitForFinalEvent = (function () {
+        var timers = {};
+        return function (callback, ms, uniqueId) {
+            if (!uniqueId) {
+                uniqueId = "Don't call this twice without a uniqueId";
+            }
+            if (timers[uniqueId]) {
+                clearTimeout(timers[uniqueId]);
+            }
+            timers[uniqueId] = setTimeout(callback, ms);
+        };
+    }());
+
+    // Wait for image to load then get image height and reposition elements
+    //$('#owl-portfolio img:first').imagesLoaded(function () {
+    $($('#owl-portfolio img')[0]).load(function () {
+
+        var i = 0,
+            c = 0,
+            imgHeight = $('#owl-portfolio img')[0].height,
+            myElements = $('.setHeight'),
+            myElements2 = $(".owl-prev, .owl-next");
+
+        for (i = 0; i < myElements.length; i++) {
+            myElements[i].style.height = imgHeight + "px";
         }
-        if (timers[uniqueId]) {
-            clearTimeout(timers[uniqueId]);
+
+        for (c = 0; c < myElements2.length; c++) {
+            myElements2[c].style.top = imgHeight / 2 - 32 + "px";
         }
-        timers[uniqueId] = setTimeout(callback, ms);
-    };
-}());
-
-$('.item img').imagesLoaded(function () {
-//$('.item img').load(function () {
-    var i = 0, imgHeight = $("#getHeight").height(), myElements = document.querySelectorAll(".setHeight");
-
-    for (i = 0; i < myElements.length; i++) {
-        myElements[i].style.height = imgHeight + "px";
-    }
+    });
 
     $(window).resize(function () {
         waitForFinalEvent(function () {
-            imgHeight = $("#getHeight").height();
+
+            var i = 0,
+                c = 0,
+                imgHeight = $('#owl-portfolio img')[0].height,
+                myElements = $('.setHeight'),
+                myElements2 = $(".owl-prev, .owl-next");
+
             for (i = 0; i < myElements.length; i++) {
                 myElements[i].style.height = imgHeight + "px";
             }
-        }, 200, "");
-    });
-});
-$(window).trigger('resize');
 
-$('.item img').imagesLoaded(function () {
-//$('.item img').load(function () {
-    var i = 0, imgHeight = $("#getHeight").height(), myElements = document.querySelectorAll(".owl-prev, .owl-next");
-    for (i = 0; i < myElements.length; i++) {
-        myElements[i].style.top = imgHeight / 2 - 32 + "px";
-    }
-
-    $(window).resize(function () {
-        waitForFinalEvent(function () {
-            imgHeight = $("#getHeight").height();
-            for (i = 0; i < myElements.length; i++) {
-                myElements[i].style.top = imgHeight / 2 - 32 + "px";
+            for (c = 0; c < myElements2.length; c++) {
+                myElements2[c].style.top = imgHeight / 2 - 32 + "px";
             }
-        }, 200, "");
+        }, 200, "a");
     });
-});
-$(window).trigger('resize');
+    $(window).trigger('resize');
 
-
-// Collapse Bootstrap navbar when anywhere on page is clicked
-/*jslint unparam:true */
-$(document).ready(function () {
+    // Collapse Bootstrap navbar when anywhere on page is clicked
+    /*jslint unparam:true */
     $("body").click(function (event) {
         // only do this if navigation is visible, otherwise you see jump in navigation while collapse() is called
         if ($(".navbar-collapse").is(":visible") && $(".navbar-toggle").is(":visible")) {
@@ -93,166 +94,44 @@ $(document).ready(function () {
     $(".navbar-toggle").click(function (event) {
         $('body').addClass('pointer');
     });
-});
-/*jslint unparam:false */
+    /*jslint unparam:false */
 
-
-// Disable and Enable scrolling functions.
-// left: 37, up: 38, right: 39, down: 40,
-// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-// var keys = [37, 38, 39, 40];
-
-// function preventDefault(e) {
-//     e = e || window.event;
-//     if (e.preventDefault) {
-//         e.preventDefault();
-//         e.returnValue = false;
-//     }
-// }
-
-// function keydown(e) {
-//     var i = 0;
-//     for (i = keys.length; i--;) {
-//         if (e.keyCode === keys[i]) {
-//             preventDefault(e);
-//             return;
-//         }
-//     }
-// }
-
-// function wheel(e) {
-//     preventDefault(e);
-// }
-
-// function disable_scroll() {
-//     var keydown = 0;
-//     if (window.addEventListener) {
-//         window.addEventListener('DOMMouseScroll', wheel, false);
-//     }
-//     window.onmousewheel = document.onmousewheel = wheel;
-//     document.onkeydown = keydown;
-// }
-
-// function enable_scroll() {
-//     if (window.removeEventListener) {
-//         window.removeEventListener('DOMMouseScroll', wheel, false);
-//     }
-//     window.onmousewheel = document.onmousewheel = document.onkeydown = null;
-// }
-
-
-$(document).ready(function () {
-// Navbar fading
-//Uses waypoints.js to trigger an action.
+    // Navbar fading
+    // Uses waypoints.js to trigger an action.
     $('#js-scroll-trigger').waypoint(function (direction) {
-        var el = '.navbar', tEnd = 'fadeOut.transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd';
+        var el = '.navbar';
 
-        $(el).removeClass('fadeIn navbar-hide');
-        $(el).toggleClass('fade-in', direction === 'down');
-        $(el).toggleClass('fade-out', direction === 'up');
-
-        $(el).on(tEnd, function () {
-            $(el).toggleClass('navbar-hide', direction === 'up');
-        });
+        if (direction === 'down') {
+            $(el).fadeIn(1000, 'swing');
+        } else {
+            $(el).fadeOut(1000, 'swing');
+        }
     }, {
         offset: '0%'
     });
-});
 
-// $(document).ready(function () {
-// //Uses waypoints.js to trigger an action. In this case disabling mouse scrolling using disable_scroll(); function and scrollTop to #ID.
-// //Is triggered by hrefs whether mouse is scrolled or not!!! i.e. is triggered by SCREEN movement.
-//     var x = 0, tEnd = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd';
-//     $('#js-scroll-trigger').waypoint(function (direction) {
-//         if (!$('html, body').is(':animated') && (direction === 'down') && x === 0) {
-//             disable_scroll();
-//             x = 1;
+    // Utilise jQuery Easing 1.3 for internal href links
+    $('a[href*=#]:not([href=#])').click(function () {
+        if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') || location.hostname === this.hostname) {
 
-//             $('html, body').stop().animate({
-//                 scrollTop: $('#anchor-portfolio').offset().top
-//             }, 1000, 'easeOutQuad');
-//         }
-
-//         if (x === 1) {
-//             // Using 'body' instead of '.navbar' fires for all occuring transitions i.e. fires multiple times.
-//             // Perhaps detect position of page rather than transitions?
-//             $('.navbar').on(tEnd, function () {
-//                 enable_scroll();
-//                 x = 2;
-//                 $('.navbar').off(tEnd);
-//             });
-//         }
-//     }, {offset: '100%'});
-// });
-
-
-// $(document).ready(function () {
-//     //Easing href link functions using jquery.easing.1.3.js
-//     //Vertical easing ".js-ver"
-//     $(function () {
-//         $('.js-ver a').bind('click', function (event) {
-//             var $anchor = $(this);
-
-//             $('html, body').stop().animate({
-//                 scrollTop: $($anchor.attr('href')).offset().top
-//             }, 1500, 'easeInOutExpo');
-
-//             event.preventDefault();
-//         });
-//     });
-// });
-
-// $(document).ready(function () {
-//     //Horizontal easing ".js-hor"
-//     $(function () {
-//         $('.js-hor a').bind('click', function (event) {
-//             var $anchor = $(this);
-
-//             $('html, body').stop().animate({
-//                 scrollLeft: $($anchor.attr('href')).offset().left
-//             }, 1500, 'easeInOutExpo');
-
-//             event.preventDefault();
-//         });
-//     });
-// });
-//
-//  $(document).ready(function () {
-//   $('a[href*=#]:not([href=#])').click(function() {
-//   //$('a.page-scroll[href*=#]:not([href=#])').click(function () {
-//     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-
-//       var target = $(this.hash);
-//       target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-//       if (target.length) {
-//         $('html,body').animate({
-//           scrollTop: target.offset().top
-//         }, 1000);
-//         return false;
-//       }
-//     }
-//   });
-// });
-
-$('a[href*=#]:not([href=#])').click(function () {
-    if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') || location.hostname === this.hostname) {
-
-        var target = $(this.hash);
-        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-        if (target.length) {
-            $('html,body').animate({
-                scrollTop: target.offset().top
-            }, 1000, 'easeInOutExpo');
-            return false;
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                $('html,body').animate({
+                    scrollTop: target.offset().top
+                }, 1000, 'easeInOutExpo');
+                return false;
+            }
         }
-    }
-});
+        return false;
+    });
 
-// Ensure page refreshes always start back at the top of the page
-$(window).on('beforeunload', function () {
-    $(window).scrollTop(0);
-});
+    // Ensure page refreshes/reloads always start back at the top of the page
+    $(window).on('beforeunload', function () {
+        $(window).scrollTop(0);
+    });
 
-$(window).unload(function () {
-    $(window).scrollTop(0);
+    $(window).unload(function () {
+        $(window).scrollTop(0);
+    });
 });
