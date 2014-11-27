@@ -81,9 +81,9 @@ $(document).ready(function () {
     });
     $(window).trigger('resize');
 
-    // Collapse Bootstrap navbar when anywhere on page is clicked
+    // Collapse Bootstrap navbar when anywhere on page is clicked AND when nav links are clicked.
     /*jslint unparam:true */
-    $("body").click(function (event) {
+    $("body, nav a").click(function (event) {
         // only do this if navigation is visible, otherwise you see jump in navigation while collapse() is called
         if ($(".navbar-collapse").is(":visible") && $(".navbar-toggle").is(":visible")) {
             $('.navbar-collapse').collapse('toggle');

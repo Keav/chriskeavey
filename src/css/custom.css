@@ -104,6 +104,7 @@ a:focus {outline:0;}
   height:100px;
   margin:-50px 0 0 -180px;
   border:1px solid #fff;
+  transition: background-color 0.5s ease;
   }
 
 .splash-background {
@@ -130,11 +131,6 @@ a:focus {outline:0;}
   margin:-180px 0 0 -180px;
   }
 
-.splash-logo img {
-  width:360px;
-  height:360px;
-  }
-
   h1 {
   margin:0;
   padding: 0;
@@ -146,11 +142,18 @@ a:focus {outline:0;}
   line-height:100px;
   }
 
+.splash:hover {
+  text-decoration:none;
+  color:#fff;
+  /*border:1px solid #2a6496;*/
+  background-color: #10ADED;
+}
+
 .pagedown {
   position:absolute;
   /*z-index:2;*/
   bottom:20px;
-  left:0;
+  /*left:0;*/
   width:100%;
   margin:0;
   padding:0;
@@ -159,10 +162,16 @@ a:focus {outline:0;}
   /*opacity:0;*/
   }
 
-.landing a:link, .landing a:visited, .landing a:active {color:#fff;}
-.landing a:hover {text-decoration:none;color:#2a6496;}
+/*a {
+  transition: color 0.3s ease;
+}*/
 
-.splash:hover {text-decoration:none;color:#fff;border:1px solid #2a6496;}
+a:link, a:visited, a:active {color:#fff;  transition: color 0.3s ease;}
+a:hover {text-decoration:none;color:#10ADED;}
+
+address a:hover {
+  color:#10ADED;
+}
 
 .divider-image-cover {
   position:relative;
@@ -395,8 +404,15 @@ a:focus {outline:0;}
 
 address .fa {
   margin-right:10px;
-  margin-left:-14px;
+  margin-left:-1rem;
+  font-size:1.6rem;
+  vertical-align: middle;
   }
+
+address .fa-envelope {
+  font-size:1.4rem;
+  margin-left:-0.7rem;
+}
 
 .social {
   position:absolute;
@@ -494,6 +510,10 @@ footer p {margin:0;padding-right:1rem;}
     line-height:80px;
     }
 
+  h1 {
+    line-height:80px;
+  }
+
   .wrapper {
     margin-bottom:20px;
     }
@@ -522,6 +542,13 @@ footer p {margin:0;padding-right:1rem;}
 
   }
 
-@media (min-width:768px) {
-  address span {margin-left:1rem;}
+address p {
+  margin:0;
+  padding:0;
+}
+
+@media (min-width: 768px) {
+  address p:nth-child(n+2) {
+    margin-left:2rem;
   }
+}
