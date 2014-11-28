@@ -411,7 +411,7 @@ address .fa {
 
 address .fa-envelope {
   font-size:1.4rem;
-  margin-left:-0.7rem;
+  margin-left:-.7rem;
 }
 
 .social {
@@ -547,8 +547,8 @@ address p {
   padding:0;
 }
 
-@media (min-width: 768px) {
+@media (min-width:768px) {
   address p:nth-child(n+2) {
-    margin-left:2rem;
+    margin-left:1.8rem;
   }
 }
