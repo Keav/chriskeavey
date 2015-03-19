@@ -49,6 +49,10 @@ RewriteCond %{HTTP_HOST} ^chriskeavey\.co\.uk$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.chriskeavey\.co\.uk$
 RewriteRule ^(.*)$ "http\:\/\/chriskeavey\.com\/$1" [R=301,L]
 
+<IfModule headers_module>
+    header set X-Clacks-Overhead "GNU Terry Pratchett"
+</IfModule>
+
 <IfModule mod_headers.c>
     Header set X-UA-Compatible "IE=edge,chrome=1"
     <FilesMatch "\.(appcache|atom|crx|css|cur|eot|f4[abpv]|flv|geojson|gif|htc|ico|jpe?g|js|json(ld)?|m4[av]|manifest|map|mp4|oex|og[agv]|opus|otf|pdf|png|rdf|rss|safariextz|svgz?|swf|topojson|tt[cf]|txt|vcf|vtt|webapp|web[mp]|woff2?|xml|xpi)$">

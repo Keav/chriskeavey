@@ -273,7 +273,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'src/',
-                    src: ['js/jquery**.min.js', '.htaccess'],
+                    src: ['js/jquery**.min.js', '**/.htaccess'],
                     dest: 'dist/',
                 }]
             },
