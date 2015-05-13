@@ -250,6 +250,7 @@ module.exports = function (grunt) {
             main: {
                 files: [{
                     expand: true,
+                    timestamp: true,
                     cwd: 'src/',
                     src: [
                         '**/*',
@@ -347,7 +348,7 @@ module.exports = function (grunt) {
     });
 
     // Default task(s).
-    grunt.registerTask('default', ['connect', 'watch']);
+    grunt.registerTask('default', ['watch']);
 
     // CSS tasks.
     grunt.registerTask('buildcss', ['sass', 'cssmin']);
@@ -355,10 +356,10 @@ module.exports = function (grunt) {
     // Bump release version numbers
     grunt.registerTask('release', ['bump:major']);
 
-    grunt.registerTask('code', ['clean', 'newer:htmlmin', 'newer:uglify', 'newer:cssmin', 'hashres', 'newer:copy', 'string-replace']);
+    grunt.registerTask('code', ['clean', 'newer:htmlmin', 'newer:uglify', 'newer:cssmin', 'hashres', 'newer:copy']);
 
     // Interim Deployment
-    grunt.registerTask('deploy', ['clean', 'newer:imagemin', 'htmlmin', 'uglify', 'cssmin', 'hashres', 'newer:copy', 'string-replace']);
+    grunt.registerTask('deploy', ['clean', 'newer:imagemin', 'htmlmin', 'newer:uglify', 'newer:cssmin', 'hashres', 'newer:copy']);
 
     grunt.registerTask('copysrc', ['clean', 'copy']);
 
