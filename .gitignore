@@ -234,3 +234,4 @@ BingSiteAuth.xml
 node_modules/
 !robots.txt
 .sass-cache
+assets/

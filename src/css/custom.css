@@ -402,7 +402,7 @@ address a:hover {
   overflow:hidden;
   }
 
-address .fa {
+/*address .fa {
   margin-right:10px;
   margin-left:-1rem;
   font-size:1.6rem;
@@ -411,7 +411,32 @@ address .fa {
 
 address .fa-envelope {
   font-size:1.4rem;
-  margin-left:-0.7rem;
+  margin-left:-.7rem;
+}*/
+
+address p {
+  margin: 0;
+  padding: 0;
+}
+
+address p:first-of-type:before {
+  font-family: 'FontAwesome';
+  position: absolute;
+  left: -1em;
+  width: 2em;
+  text-align: center;
+}
+
+address:first-of-type p:first-of-type:before {
+    content: '\f015';
+}
+
+address:nth-of-type(2) p:first-of-type:before {
+    content: '\f0e0';
+}
+
+address:nth-of-type(3) p:first-of-type:before {
+    content: '\f095';
 }
 
 .social {
@@ -536,19 +561,19 @@ footer p {margin:0;padding-right:1rem;}
 
   .reel {width:230px;margin:0 auto;}
 
-  address .fa {
+/*  address .fa {
     margin:0;
-    }
+    }*/
 
+  address p:first-of-type:before {
+    position: relative;
+    left:0;
+    margin: 0;
   }
-
-address p {
-  margin:0;
-  padding:0;
 }
 
-@media (min-width: 768px) {
+/*@media (min-width:768px) {
   address p:nth-child(n+2) {
-    margin-left:2rem;
+    margin-left:1.8rem;
   }
-}
+}*/

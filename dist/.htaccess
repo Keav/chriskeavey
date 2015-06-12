@@ -3,28 +3,55 @@ RewriteOptions inherit
 
 RewriteEngine on
 
+# RewriteCond %{HTTP_HOST} ^www\.chriskeavey\.com$
+# RewriteRule ^(.*)$ "http\:\/\/chriskeavey\.com\/$1" [R=301,L]
+
+# RewriteCond %{HTTP_HOST} ^chriskeavey\.info$ [OR]
+# RewriteCond %{HTTP_HOST} ^www\.chriskeavey\.info$
+# RewriteRule ^/?$ "http\:\/\/chriskeavey\.com\/" [R=301,L]
+
+# RewriteCond %{HTTP_HOST} ^chriskeavey\.uk$ [OR]
+# RewriteCond %{HTTP_HOST} ^www\.chriskeavey\.uk$
+# RewriteRule ^/?$ "http\:\/\/chriskeavey\.com\/" [R=301,L]
+
+# RewriteCond %{HTTP_HOST} ^chriskeavey\.org$ [OR]
+# RewriteCond %{HTTP_HOST} ^www\.chriskeavey\.org$
+# RewriteRule ^/?$ "http\:\/\/chriskeavey\.com\/" [R=301,L]
+
+# RewriteCond %{HTTP_HOST} ^chriskeavey\.net$ [OR]
+# RewriteCond %{HTTP_HOST} ^www\.chriskeavey\.net$
+# RewriteRule ^/?$ "http\:\/\/chriskeavey\.com\/" [R=301,L]
+
+# RewriteCond %{HTTP_HOST} ^chriskeavey\.co\.uk$ [OR]
+# RewriteCond %{HTTP_HOST} ^www\.chriskeavey\.co\.uk$
+# RewriteRule ^/?$ "http\:\/\/chriskeavey\.com\/" [R=301,L]
+
 RewriteCond %{HTTP_HOST} ^www\.chriskeavey\.com$
 RewriteRule ^(.*)$ "http\:\/\/chriskeavey\.com\/$1" [R=301,L]
 
 RewriteCond %{HTTP_HOST} ^chriskeavey\.info$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.chriskeavey\.info$
-RewriteRule ^/?$ "http\:\/\/chriskeavey\.com\/" [R=301,L]
+RewriteRule ^(.*)$ "http\:\/\/chriskeavey\.com\/$1" [R=301,L]
 
 RewriteCond %{HTTP_HOST} ^chriskeavey\.uk$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.chriskeavey\.uk$
-RewriteRule ^/?$ "http\:\/\/chriskeavey\.com\/" [R=301,L]
+RewriteRule ^(.*)$ "http\:\/\/chriskeavey\.com\/$1" [R=301,L]
 
 RewriteCond %{HTTP_HOST} ^chriskeavey\.org$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.chriskeavey\.org$
-RewriteRule ^/?$ "http\:\/\/chriskeavey\.com\/" [R=301,L]
+RewriteRule ^(.*)$ "http\:\/\/chriskeavey\.com\/$1" [R=301,L]
 
 RewriteCond %{HTTP_HOST} ^chriskeavey\.net$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.chriskeavey\.net$
-RewriteRule ^/?$ "http\:\/\/chriskeavey\.com\/" [R=301,L]
+RewriteRule ^(.*)$ "http\:\/\/chriskeavey\.com\/$1" [R=301,L]
 
 RewriteCond %{HTTP_HOST} ^chriskeavey\.co\.uk$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.chriskeavey\.co\.uk$
-RewriteRule ^/?$ "http\:\/\/chriskeavey\.com\/" [R=301,L]
+RewriteRule ^(.*)$ "http\:\/\/chriskeavey\.com\/$1" [R=301,L]
+
+<IfModule headers_module>
+    header set X-Clacks-Overhead "GNU Terry Pratchett"
+</IfModule>
 
 <IfModule mod_headers.c>
     Header set X-UA-Compatible "IE=edge,chrome=1"
