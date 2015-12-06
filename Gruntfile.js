@@ -359,7 +359,7 @@ module.exports = function (grunt) {
     grunt.registerTask('code', ['clean', 'newer:htmlmin', 'newer:uglify', 'newer:cssmin', 'hashres', 'newer:copy']);
 
     // Interim Deployment
-    grunt.registerTask('deploy', ['clean', 'newer:imagemin', 'htmlmin', 'newer:uglify', 'newer:cssmin', 'hashres', 'newer:copy']);
+    grunt.registerTask('deploy', ['clean', 'newer:imagemin', 'htmlmin', 'newer:uglify', 'newer:cssmin', 'newer:copy', 'hashres']);
 
     grunt.registerTask('copysrc', ['clean', 'copy']);
 
