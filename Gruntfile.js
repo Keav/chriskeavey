@@ -274,9 +274,16 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['watch']);
 
     // Build for Staging
-    grunt.registerTask('build', ['clean', 'autoprefixer', 'newer:imagemin:dist', 'htmlmin', 'newer:uglify', 'newer:cssmin', 'hashres:min', 'hashres:prod', 'newer:copy']);
+    grunt.registerTask('build', ['clean', 'autoprefixer', 'newer:imagemin:dist', 'htmlmin', 'newer:uglify', 'newer:cssmin', 'hashres:min', 'newer:copy', 'hashres:prod']);
 
     // Bump release version numbers
     grunt.registerTask('release', ['bump:major']);
+
+    grunt.registerTask('code', ['clean', 'newer:htmlmin', 'newer:uglify', 'newer:cssmin', 'newer:copy', 'hashres']);
+
+    // Interim Deployment
+    grunt.registerTask('deploy', ['clean', 'newer:imagemin', 'htmlmin', 'newer:uglify', 'newer:cssmin', 'newer:copy', 'hashres']);
+
+    grunt.registerTask('copysrc', ['clean', 'copy']);
 
 };
