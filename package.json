@@ -1,7 +1,7 @@
 {
   "name": "chriskeavey",
   "version": "1.0.4",
-  "description": "My own proffessional website",
+  "description": "My own professional website",
   "private": true,
   "homepage": "http://chriskeavey.com",
   "author": {
@@ -19,22 +19,19 @@
     "grunt-autoprefixer": "*",
     "grunt-bump": "*",
     "grunt-contrib-clean": "*",
-    "grunt-contrib-compass": "*",
-    "grunt-contrib-connect": "*",
     "grunt-contrib-copy": "*",
     "grunt-contrib-cssmin": "*",
     "grunt-contrib-htmlmin": "*",
     "grunt-contrib-imagemin": "*",
-    "grunt-contrib-jshint": "*",
     "grunt-contrib-sass": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*",
     "grunt-hashres": "*",
-    "grunt-htmlhint": "*",
     "grunt-newer": "*",
     "grunt-responsive-images": "*",
     "grunt-shell": "*",
-    "grunt-string-replace": "*",
+    "grunt-strip-css-comments": "*",
+    "grunt-stripcomments": "*",
     "grunt-uncss": "*",
     "matchdep": "*"
   }

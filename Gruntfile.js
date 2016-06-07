@@ -61,20 +61,25 @@ module.exports = function (grunt) {
             },
         },
 
-        htmlhint: {
-            build: {
+        // Strip comments - only appears to work in pure files i.e. pure php, not php embedded in html
+        comments: {
+            php: {
+                // Target-specific file lists and/or options go here.
                 options: {
-                    'tag-pair': true,
-                    'tagname-lowercase': true,
-                    'attr-lowercase': true,
-                    'attr-value-double-quotes': true,
-                    'doctype-first': true,
-                    'spec-char-escape': true,
-                    'id-unique': true,
-                    'head-script-disabled': true,
-                    'style-disabled': true
+                    singleline: true,
+                    multiline: true
                 },
-                src: ['src/index.html']
+                src: [ 'dist/index.html'] // files to remove comments from
+            },
+        },
+
+        // Strip CSS comments - here used to remove php comments from a php block within html.
+        // Works with php block if comments are marked with /* */ so CSS regex finds it.
+        stripCssComments: {
+            dist: {
+                files: {
+                    'dist/index.html': 'dist/index.html'
+                }
             }
         },
 
@@ -100,20 +105,6 @@ module.exports = function (grunt) {
                 },
                 files: {
                     'src/css/sass.css': 'src/scss/sass.scss'
-                }
-            }
-        },
-
-        compass: {
-            dist: {
-                options: {
-                    require: 'susy',
-                    sassDir: 'src/scss',
-                    cssDir: 'src/css',
-                    javascriptsDir: 'src/js',
-                    fontsDir: 'src/fonts',
-                    imagesDir: 'src/images',
-                    outputStyle: 'expanded'
                 }
             }
         },
@@ -178,19 +169,6 @@ module.exports = function (grunt) {
                 src: '*.css',
                 dest: 'src/css/'
             }
-        },
-
-        jshint: {
-            options: {
-                curly: true,
-                eqeqeq: true,
-                eqnull: true,
-                browser: true,
-                globals: {
-                    jQuery: true
-                },
-            },
-            uses_defaults: ['src/js/custom.js', 'Gruntfile.js'],
         },
 
         uglify: {
@@ -280,21 +258,6 @@ module.exports = function (grunt) {
             },
         },
 
-        'string-replace': {
-            inline: {
-                files: {'dist/index.html' : 'dist/index.html'},
-                options: {
-                    replacements: [
-                    // place files inline example
-                        {
-                            pattern: '</head>',
-                            replacement: '<script src="js/analytics.min.js" async></script></head>'
-                        }
-                    ]
-                }
-            }
-        },
-
         shell: {
             bumpVersion: {
                 command: 'npm version patch'
@@ -319,18 +282,6 @@ module.exports = function (grunt) {
             }
         },
 
-        connect: {
-            server: {
-                options: {
-                    livereload: true,
-                    hostname: 'localhost',
-                    port: 9001,
-                    base: 'src/',
-                    open: true
-                }
-            }
-        },
-
         watch: {
             options: {
             //    livereload: true
@@ -350,17 +301,10 @@ module.exports = function (grunt) {
     // Default task(s).
     grunt.registerTask('default', ['watch']);
 
-    // CSS tasks.
-    grunt.registerTask('buildcss', ['sass', 'cssmin']);
+    // Build for Staging
+    grunt.registerTask('build', ['clean', 'newer:imagemin:dist', 'newer:htmlmin', 'stripCssComments', 'newer:uglify', 'newer:cssmin', 'newer:copy', 'hashres:min', 'hashres:prod']);
 
     // Bump release version numbers
     grunt.registerTask('release', ['bump:major']);
-
-    grunt.registerTask('code', ['clean', 'newer:htmlmin', 'newer:uglify', 'newer:cssmin', 'hashres', 'newer:copy']);
-
-    // Interim Deployment
-    grunt.registerTask('deploy', ['clean', 'newer:imagemin', 'htmlmin', 'newer:uglify', 'newer:cssmin', 'newer:copy', 'hashres']);
-
-    grunt.registerTask('copysrc', ['clean', 'copy']);
 
 };
